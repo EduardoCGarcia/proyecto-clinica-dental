@@ -1,15 +1,20 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require("cors");
 
 const dbConection = require('./config/mysql');
 
 const PORT = process.env.PORT;
 const app = express();
 
+app.use(cors());
+app.use(express.json());
 
-app.get('/', function (req, res) {
-    res.send('Hello World')
-})
+
+app.use(express.static("storage"));
+
+
+app.use("/api", require('./routes'));
 
 const startServer = async () => {
     await dbConection()
