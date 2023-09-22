@@ -1,19 +1,29 @@
-const { Sequelize } = require('sequelize');
-const config = require('./config.json').development;
+const {Sequelize} = require("sequelize");
 
-const sequelize = new Sequelize(config.database, config.username, config.password, {
-    host: config.host,
-    dialect: 'mysql',
-});
+const database =  process.env.MISQL_DATABASE;
+const userName =  process.env.MISQL_USER;
+const password =  process.env.MISQL_PASSWORD;
+const host =  process.env.MISQL_HOST;
 
-// Prueba de conexión
-const dbConection = async () => {
-    try {
-        await sequelize.authenticate();
-        console.log('Conexión establecida con éxito.');
-    } catch (error) {
-        console.error('Error al conectar con la base de datos:', error);
+const sequelize = new Sequelize(
+    database,
+    userName,
+    password,
+    {
+        host,
+        dialect:"mysql"
     }
-}
+);
 
-module.exports = dbConection;
+const dbConnectMySql =  async () => {
+    try {
+        await sequelize.authenticate(
+            console.log("***** MYSQL CONEXIÓN CORRECTA *****")
+        )
+    } catch (error) {
+        console.log("*****MYSQL ERROR DE CONEXION*****", error);
+    }
+};
+
+
+module.exports =  {sequelize, dbConnectMySql};
