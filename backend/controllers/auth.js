@@ -15,17 +15,17 @@ const signUp = async (req, res) => {
         
         dataUser.set('password', undefined, { strict: false })
 
-        /* const data = {
+          const data = {
             token: await tokenSign(dataUser),
             user: dataUser
-        }  */
+        } 
 
 
-        res.send({ data: dataUser });
+        res.send({ data: data });
 
     } catch (error) {
-        console.log(error);
-        res.send("error papu");
+        console.error('Error during signUp: ', error); // Cambia a console.error para diferenciar errores en tus logs
+        res.status(500).send({ message: "Ha ocurrido un error interno. Por favor, intenta nuevamente más tarde." });
     }
 }
 
@@ -37,6 +37,8 @@ const logIn = async (req, res) => {
         res.send("error papu");
     }
 }
+
+
 
 const resetPassword = () => { }
 
