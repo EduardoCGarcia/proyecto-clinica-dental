@@ -1,6 +1,7 @@
 const { matchedData } = require("express-validator");
 const { encrypt, compare } = require("../utils/handlePassword");
 
+const { handleHttpError } = require("../utils/handleError")
 const { tokenSign, verifyToken } = require("../utils/handleJwt")
 const { usersModel } = require("../models")
 
@@ -32,15 +33,37 @@ const signUp = async (req, res) => {
 const logIn = async (req, res) => {
     try {
         req = matchedData(req);
-        res.send(req);
+        const user = await usersModel.findOne({ where: { email: req.email } });
+        
+        if (!user) {
+            handleHttpError(res, "USER_NOT_EXIST", 404);
+            return;
+        }
+
+        const hashPassword = user.get('password');
+
+        const check = await compare(req.password, hashPassword);
+
+        if (!check) {
+            handleHttpError(res, "PASSWORD_INVALID", 401);
+            return;
+        }
+
+        user.set('password', undefined,{strict:false});
+
+        const data = {
+            token: await tokenSign(user),
+            user
+        }
+
+        res.send(data);
+
     } catch (error) {
-        res.send("error papu");
+        console.log(error);
+        handleHttpError(res, "ERROR_LOGIN_USER");
     }
 }
 
 
 
-const resetPassword = () => { }
-
-
-module.exports = { signUp, logIn, resetPassword };
+module.exports = { signUp, logIn };
