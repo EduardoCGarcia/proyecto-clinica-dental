@@ -9,16 +9,31 @@ const router = express.Router();
 const PATH_ROUTES = __dirname;
 
 /**
- * Función que quita la extensión de un nombre de archivo.
- * @param {string} fileName - El nombre del archivo al que se le quitará la extensión.
- * @return {string} - Nombre del archivo sin su extensión.
+ * Removes the file extension from a given file name.
+ * 
+ * @param {string} fileName - The name of the file including the extension.
+ * @returns {string} - The file name without the extension.
  */
 const removeExtension = (fileName) => {
     // Split the file name when a dot is found and take the first part
     return fileName.split('.').shift();
 }
 
-// Leer todos los archivos en el directorio actual de manera sincrónica
+/**
+     * This method takes a file as input and performs the following operations:
+     * 
+     * 1. It extracts the name of the file without its extension using the
+     * `removeExtension` function.
+     * 2. If the name of the file is not 'index', it proceeds to the next step.
+     * 3. It configures a route based on the name of the file and requires its content
+     * as middleware.
+     * - For example, if the file is named 'users.js', the route '/users' will be
+     * configured.
+     * 4. The configured route and its corresponding middleware are added to the
+     * router.
+     * 
+     * Note: The `removeExtension` function is not defined in the provided code snippet.
+     */
 fs.readdirSync(PATH_ROUTES).filter((file) => {
     // Obtener el nombre del archivo sin su extensión
     const name = removeExtension(file);

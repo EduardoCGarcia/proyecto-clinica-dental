@@ -15,6 +15,20 @@ const sequelize = new Sequelize(
     }
 );
 
+/**
+ * This is a JavaScript method named `dbConnectMySql` that establishes a connection
+ * to a MySQL database using Sequelize. It is an asynchronous function that
+ * returns a Promise.
+ * 
+ * The method attempts to authenticate the connection by calling the `authenticate`
+ * method of the `sequelize` object. If the authentication is successful, it logs
+ * the message "***** MYSQL CONEXIÓN CORRECTA *****" to the console. If there is
+ * an error during the authentication process, it logs the error message to the
+ * console as "*****MYSQL ERROR DE CONEXION*****".
+ * 
+ * Note: The method assumes that the `sequelize` object is already defined and
+ * configured properly.
+ */
 const dbConnectMySql =  async () => {
     try {
         await sequelize.authenticate(
