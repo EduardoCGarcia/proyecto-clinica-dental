@@ -34,7 +34,7 @@ const validatorLogin = [
     check("password")
     .exists()
     .notEmpty()
-    .isLength({min:8,max:15}),
+    .isLength({min:4,max:15}),
     check("email")
     .exists()
     .notEmpty()
