@@ -40,15 +40,15 @@ const signUp = async (req, res) => {
     try {
         req = matchedData(req);
 
-        const password = await encrypt(req.password);
+        const password = await encrypt(req.pass);
         /**
      * Body object.
      */
-    const body = { ...req, password: password };
+    const body = { ...req, pass: password };
         
         const dataUser = await usersModel.create(body);
         
-        dataUser.set('password', undefined, { strict: false })
+        dataUser.set('pass', undefined, { strict: false })
 
           /**
      * Data object.
@@ -85,16 +85,16 @@ const signUp = async (req, res) => {
             return;
         }
 
-        const hashPassword = user.get('password');
+        const hashPassword = user.get('pass');
 
-        const check = await compare(req.password, hashPassword);
+        const check = await compare(req.pass, hashPassword);
 
         if (!check) {
             handleHttpError(res, "PASSWORD_INVALID", 401);
             return;
         }
 
-        user.set('password', undefined,{strict:false});
+        user.set('pass', undefined,{strict:false});
 
         /**
          * Data object.
