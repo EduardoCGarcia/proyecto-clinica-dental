@@ -2,7 +2,7 @@ const {sequelize} = require("../../config/mysql");
 const { DataTypes } = require("sequelize");
 
 const Usuario = sequelize.define(
-    "usuarios",
+    "usuario",
     {
         nombre:{
             type:DataTypes.STRING,
