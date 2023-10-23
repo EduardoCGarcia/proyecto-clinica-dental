@@ -2,18 +2,19 @@ const { sequelize } = require("../../config/mysql");
 const { DataTypes } = require("sequelize");
 
 const Storage = sequelize.define(
-    "storage",
+    "storages",
     {
         url: {
             type: DataTypes.STRING,
-            allowNull: null
+            allowNull: false
         },
         filename: {
             type: DataTypes.STRING,
+            allowNull: false
         }
     },
     {
-        timestamps: true,
+        timestamps: false,
     }
 
 );

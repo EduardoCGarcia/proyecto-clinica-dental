@@ -1,9 +1,10 @@
 const fs = require("fs");
 
-const { storageModel } = require('../models');
+const models = require("../models")
+const  storageModel = models.storageModel;
 const { handleHttpError } = require("../utils/handleError");
 const { matchedData } = require("express-validator");
-const { log } = require("console");
+
 
 const PUBLIC_URL = process.env.PUBLIC_URL;
 const MEDIA_PATH = `${__dirname}/../storage`
@@ -46,10 +47,9 @@ const createItem = async (req, res) => {
             url: `${PUBLIC_URL}/${file.filename}`
         }
 
-        res.send({ fileData })
-        //const data =  await storageModel.create(fileData);
+        const data =  await storageModel.create(fileData);
         //Los controladores siempre deben retornar algo de lo contrario lse queda colgada la aplicación
-        //res.send({data});
+        res.send({data});
     } catch (e) {
         console.log(e);
         handleHttpError(res, "ERROR_CREATE_ITEM");
