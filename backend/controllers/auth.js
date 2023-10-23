@@ -3,7 +3,8 @@ const { encrypt, compare } = require("../utils/handlePassword");
 
 const { handleHttpError } = require("../utils/handleError")
 const { tokenSign, verifyToken } = require("../utils/handleJwt")
-const { usersModel } = require("../models")
+const models = require("../models");
+const Usuario = models.usersModel;
 
 /**
  * The `signUp` function is an asynchronous function that handles the sign-up
@@ -46,7 +47,7 @@ const signUp = async (req, res) => {
      */
     const body = { ...req, pass: password };
         
-        const dataUser = await usersModel.create(body);
+        const dataUser = await Usuario.create(body);
         
         dataUser.set('pass', undefined, { strict: false })
 
