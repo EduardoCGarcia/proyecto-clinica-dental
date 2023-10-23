@@ -12,7 +12,7 @@ const MEDIA_PATH = `${__dirname}/../storage`
 
 const getItems = async (req, res) => {
     try {
-        const data = await storageModel.find({});
+        const data = await storageModel.findAll();
         res.send({ data });
     } catch (e) {
         console.log(e);
@@ -26,7 +26,7 @@ const getItem = async (req, res) => {
         req = matchedData(req);
         const { id } = req;
 
-        const data = await storageModel.findById(id);
+        const data = await storageModel.findByPk(id);
 
         res.send({ data });
     } catch (e) {
@@ -59,28 +59,36 @@ const createItem = async (req, res) => {
 
 
 const deleteItem = async (req, res) => {
+    //TODO Eliminar el file de la base de datos y del sistema de archivos
     try {
         const { id } = matchedData(req);
-        const dataFile = await storageModel.findById(id);
-        await storageModel.deleteOne({ _id: id });
-        await storageModel.delete({ _id: id });
-        const { filename } = dataFile;
-        const filePath = `${MEDIA_PATH}/${filename}`;
+        
+        // Buscar el archivo por ID
+        const dataFile = await storageModel.findByPk(id); 
 
-        /**
-                 * Data object.
-                 */
+        // Si no se encuentra el archivo, enviar un error
+        if (!dataFile) {
+            return res.status(404).send({ message: "Archivo no encontrado" });
+        }
+
+        const { filename } = dataFile;
+
+        // Eliminar el archivo
+        await dataFile.destroy();
+
+        const filePath = `${MEDIA_PATH}/${filename}`;
 
         const data = {
             filePath,
             deleted: 1
-        }
+        };
 
         res.send({ data });
     } catch (e) {
-        handleHttpError(res, "ERROR_DELETE_ITEM")
+        handleHttpError(res, "ERROR_DELETE_ITEM");
     }
 };
+
 
 
 module.exports = { getItems, getItem, createItem, deleteItem };
