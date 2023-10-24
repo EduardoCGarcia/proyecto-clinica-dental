@@ -17,7 +17,12 @@ const validatorCreateAppoinment = [
         .withMessage('El ID del paciente es requerido'),
 
     check('fecha')
-        .isDate()
+        .custom(value => {
+            if (isNaN(new Date(value).getTime())) {
+                throw new Error();
+            }
+            return true;
+        })
         .withMessage('La fecha debe ser válida')
         .not()
         .isEmpty()
@@ -43,9 +48,9 @@ const validatorCreateAppoinment = [
         .isIn(['cita', 'urgencia'])
         .withMessage('El rol de la consulta debe ser "cita" o "urgencia"'),
 
-    (req,res,next) => {
-        return validateResults(req,res,next);
+    (req, res, next) => {
+        return validateResults(req, res, next);
     }
 ]
 
-module.exports = {validatorCreateAppoinment}
+module.exports = { validatorCreateAppoinment }
