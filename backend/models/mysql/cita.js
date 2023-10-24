@@ -29,7 +29,7 @@ const Cita = sequelize.define(
             allowNull: true
         },
         rol_consulta: {
-            type: DataTypes.ENUM,
+            type: DataTypes.ENUM('cita','urgencia'),
             allowNull: true
         }
     },
