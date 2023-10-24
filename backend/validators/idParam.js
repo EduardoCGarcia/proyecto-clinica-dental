@@ -1,7 +1,7 @@
 const { check } = require('express-validator');
 const validateResults = require("../utils/handleValidator");
 
-const validatorGetItem = [
+const validatorIdParam = [
     check("id")
         .exists()
         .notEmpty(),
@@ -10,4 +10,4 @@ const validatorGetItem = [
     }
 ]
 
-module.exports = validatorGetItem;
+module.exports = validatorIdParam;
