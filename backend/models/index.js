@@ -14,6 +14,7 @@ const models = {
     facturasModel: require(`${pathModels}/factura`),
     pagosModel : require(`${pathModels}/pagos`),
     historialClinicoModel : require(`${pathModels}/historial_clinico`),
+    tratamientoFacturasModel : require(`${pathModels}/tratamiento_factura`),
 }
 
 module.exports = models;

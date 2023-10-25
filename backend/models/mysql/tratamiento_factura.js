@@ -2,7 +2,7 @@ const {sequelize} = require("../../config/mysql");
 const { DataTypes } = require("sequelize");
 
 const TratamientoFactura = sequelize.define(
-    "tratamiento_factura",
+    "tratamiento_facturas",
     {
         id_factura: {
             type: DataTypes.INTEGER,
