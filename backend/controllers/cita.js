@@ -25,7 +25,7 @@ const getAppointments = async (req, res) => {
         return res.status(400).send(dataAppointments);
 
     } catch (error) {
-        return res.send("Error interno del servidor: " + error); // This will send a response to the client indicating that there was an error creating the appointment and will include the
+        return res.status(500).send("Error interno del servidor: " + error); // This will send a response to the client indicating that there was an error creating the appointment and will include the
     }
 }
 const getAppointment = async (req, res) => {
