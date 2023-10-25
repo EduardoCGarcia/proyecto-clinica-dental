@@ -9,7 +9,7 @@ const {
 } = require('../controllers/facturas');
 
 const { validatorCreateFactura, validatorUpdateFactura } = require('../validators/facturas');
-const validatorIdParam = require('../validators/idParam');
+const {validatorIdParam} = require('../validators/idParam');
 
 router.post("/", validatorCreateFactura, createFactura);
 
