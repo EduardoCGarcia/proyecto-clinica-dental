@@ -9,7 +9,7 @@ const pathModels = (ENGINE_DB === 'nosql') ? path.join(__dirname, 'nosql') : pat
 const models = {
     usersModel: require(`${pathModels}/users`),
     storageModel: require(`${pathModels}/storage`),
-    tatamientosModel: require(`${pathModels}/tratamiento`),
+    tratamientosModel: require(`${pathModels}/tratamiento`),
     citasModel: require(`${pathModels}/cita`) 
     
 }
