@@ -11,8 +11,8 @@ const models = {
     storageModel: require(`${pathModels}/storage`),
     tratamientosModel: require(`${pathModels}/tratamiento`),
     citasModel: require(`${pathModels}/cita`),
-    facturasModel: require(`${pathModels}/factura`)
-    
+    facturasModel: require(`${pathModels}/factura`),
+    pagosModel : require(`${pathModels}/pagos`)
 }
 
 module.exports = models;
