@@ -5,7 +5,7 @@ const {
     getTratamiento, 
     getTratamientos 
 } = require('../controllers/tratamientos');
-const validatorIdParam = require('../validators/idParam');
+const {validatorIdParam} = require('../validators/idParam');
 
 router.get(
     '/:id', 

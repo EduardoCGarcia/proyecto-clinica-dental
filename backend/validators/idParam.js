@@ -10,4 +10,14 @@ const validatorIdParam = [
     }
 ]
 
-module.exports = validatorIdParam;
+const validatorIdFacturaParam = [
+    check("id_factura")
+        .exists()
+        .notEmpty(),
+
+    (req, res, next) => {
+        return validateResults(req, res, next);
+    }
+]
+
+module.exports = { validatorIdParam, validatorIdFacturaParam };

@@ -14,7 +14,7 @@ const {
     validatorUpdateAppoinment 
 } = require('../validators/cita');
 
-const validatorIdParam = require("../validators/idParam");
+const {validatorIdParam} = require("../validators/idParam");
 
 
 
