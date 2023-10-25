@@ -10,7 +10,8 @@ const models = {
     usersModel: require(`${pathModels}/users`),
     storageModel: require(`${pathModels}/storage`),
     tratamientosModel: require(`${pathModels}/tratamiento`),
-    citasModel: require(`${pathModels}/cita`) 
+    citasModel: require(`${pathModels}/cita`),
+    facturasModel: require(`${pathModels}/factura`)
     
 }
 

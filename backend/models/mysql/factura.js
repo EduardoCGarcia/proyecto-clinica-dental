@@ -2,7 +2,7 @@ const {sequelize} = require("../../config/mysql");
 const { DataTypes } = require("sequelize");
 
 const Factura = sequelize.define(
-    "factura",
+    "facturas",
     {
         id_paciente: {
             type: DataTypes.INTEGER,
@@ -14,15 +14,18 @@ const Factura = sequelize.define(
         },
         monto_total: {
             type: DataTypes.DECIMAL(10, 2),
-            allowNull: false
+            allowNull: true,
+            defaultValue: 0
         },
         saldo_deudor: {
             type: DataTypes.DECIMAL(10, 2),
-            allowNull: false
+            allowNull: true,
+            defaultValue: 0
         },
         estado: {
             type: DataTypes.BOOLEAN,
-            allowNull: false
+            allowNull: true,
+            defaultValue: 0
         }
     },
     {
