@@ -1,0 +1,15 @@
+ul li a{
+    text-decoration: none;
+    color: #000000;
+}
+
+.containter{
+    margin: 15px;
+}
+
+.content{
+    height: 80vh;
+    display: grid;
+    align-items: center;
+    
+}

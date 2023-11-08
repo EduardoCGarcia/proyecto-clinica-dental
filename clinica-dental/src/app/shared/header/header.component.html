@@ -1,0 +1,46 @@
+<header>
+    <div class="container__menu">
+      <div class="logo">
+        <img src="./assets/diente.png" class="logo" />
+        
+      </div>
+      <div class="menu">
+        <i 
+        class="pi pi-bars" 
+        style="color: rgb(255, 255, 255)" 
+        id="btn_menu" 
+        (click)="mostrarMenu()"
+        #btnMenuOpen
+        ></i>
+        <i 
+        class="pi pi-times" 
+        style="color: rgb(255, 255, 255)" 
+        id="btn_menu_close" 
+        (click)="ocultarMenu()"
+        #btnMenuClose
+        ></i>
+        
+        <nav id="nav" #nav>
+          <ng-container>
+            <ul>
+              <li><a id="item" routerLink="home">inicio</a></li>
+              <li><a id="item" routerLink="citas">citas</a></li>
+              <li><a id="item" routerLink="pacientes">pacientes</a></li>
+              <li><a id="item" routerLink="personal">personal</a></li>
+              <li><a id="item" routerLink="login">Login</a></li>
+            </ul>
+          </ng-container>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+<!--   <ng-template #viewAdmin>
+    <ul>
+      <li><a href="#" routerLink="inicio">inicio</a></li>
+      <li><a href="#" routerLink="divulgadores">divulgadores</a></li>
+      <li><a href="#" routerLink="cientificos">Científicos</a></li>
+      <li><a href="#" routerLink="productos">productos</a></li>
+      <li><a href="#" routerLink="auth" id="selected">login</a></li>
+    </ul>
+  </ng-template> -->
