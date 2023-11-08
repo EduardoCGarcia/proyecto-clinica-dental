@@ -8,6 +8,7 @@ import { PrimeNgModule } from './prime-ng/prime-ng.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './pages/auth/auth.module';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent
@@ -20,7 +21,8 @@ import { AuthModule } from './pages/auth/auth.module';
     SharedModule,
     PrimeNgModule,
     FormsModule,
-    AuthModule
+    AuthModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

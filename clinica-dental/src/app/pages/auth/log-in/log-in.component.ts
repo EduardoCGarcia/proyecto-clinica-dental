@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario, UsuarioLogIn } from '../interfaces/usuario';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class LogInComponent implements OnInit{
 
   userForm !: FormGroup;
 
-  constructor(private formBuilder:FormBuilder){}
+  constructor(private formBuilder:FormBuilder, private authSvc:AuthService){}
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -27,9 +28,18 @@ export class LogInComponent implements OnInit{
     
   }
 
-  onSubmit(){
-    console.log(this.userForm.value);
+  onLogin(){
+    if (this.userForm.invalid) {
+      return;
+    }
+    const formValue = this.userForm.value;
     
+    this.authSvc.login(formValue).subscribe(res => {
+      if (res) {
+        console.log(res.user.fechaNacimiento);
+        
+      }
+    })
   }
 
 }
