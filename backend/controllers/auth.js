@@ -79,7 +79,7 @@ const signUp = async (req, res) => {
     const logIn = async (req, res) => {
     try {
         req = matchedData(req);
-        const user = await usersModel.findOne({ where: { email: req.email } });
+        const user = await Usuario.findOne({ where: { email: req.email } });
         
         if (!user) {
             handleHttpError(res, "USER_NOT_EXIST", 404);
