@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output, ViewChild, ElementRef} from '@angular/core';
+import { AuthService } from 'src/app/pages/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +11,15 @@ export class HeaderComponent {
   @ViewChild('nav') navElement!: ElementRef;
   @ViewChild('btnMenuOpen') btnMenuOpenElement!: ElementRef;
   @ViewChild('btnMenuClose') btnMenuCloseElement!: ElementRef;
+  @Output() toggle = new EventEmitter<void>();
+
+  role: string | null = null;
+
+
+  constructor(public authSvc:AuthService){
+    this.authSvc.getRole().subscribe(role => this.role = role);
+  }
+
 
   mostrarMenu() {
     const nav = this.navElement.nativeElement;
@@ -31,9 +41,6 @@ export class HeaderComponent {
     btnClose.style.display = "none"
   }
 
-  @Output() toggle = new EventEmitter<void>();
-
-
   ngOnInit(): void {
     headerTransparent();
   }
@@ -41,7 +48,10 @@ export class HeaderComponent {
   onToggle(): void {
     this.toggle.emit();
   }
- 
+  
+  logOut():void {
+    this.authSvc.logout();
+  }
 
 }
 

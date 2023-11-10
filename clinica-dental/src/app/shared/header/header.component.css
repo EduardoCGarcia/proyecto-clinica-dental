@@ -62,7 +62,7 @@ header {
     z-index: 10;
 }
 
-#item {
+.item {
     text-decoration: none;
     background: rgb(2, 0, 36);
     background: rgb(59, 255, 255);
@@ -147,3 +147,14 @@ header {
         background: rgba(255, 255, 255, 0.2);
     }
 }
+
+#name_web {
+    text-decoration: none;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(2, 0, 36, 1) 0%, rgba(57, 144, 93, 1) 0%, rgba(0, 212, 255, 1) 100%);
+    font-size: 2rem;
+
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
