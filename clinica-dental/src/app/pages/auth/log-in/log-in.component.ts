@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario, UsuarioLogIn } from '../interfaces/usuario';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,13 +13,13 @@ import { AuthService } from '../services/auth.service';
 export class LogInComponent implements OnInit{
 
   usuario:UsuarioLogIn = {
-    email: "",
-    pass: ""
+    email: "echavezg200@gmail.com",
+    pass: "12345678"
   }
 
   userForm !: FormGroup;
 
-  constructor(private formBuilder:FormBuilder, private authSvc:AuthService){}
+  constructor(private formBuilder:FormBuilder, public authSvc:AuthService, private router: Router){}
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -36,8 +37,7 @@ export class LogInComponent implements OnInit{
     
     this.authSvc.login(formValue).subscribe(res => {
       if (res) {
-        console.log(res.user.fechaNacimiento);
-        
+        location.replace('/home')
       }
     })
   }
