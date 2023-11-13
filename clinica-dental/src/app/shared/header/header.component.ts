@@ -51,6 +51,7 @@ export class HeaderComponent {
   
   logOut():void {
     this.authSvc.logout();
+    this.authSvc.getRole().subscribe(role => this.role = role);
   }
 
 }
