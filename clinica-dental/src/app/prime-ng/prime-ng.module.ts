@@ -6,6 +6,9 @@ import { InputTextModule } from "primeng/inputtext";
 import { CardModule } from "primeng/card";
 import { PanelModule } from "primeng/panel";
 import { DividerModule } from 'primeng/divider';
+import { DialogModule } from "primeng/dialog";
+import { TableModule } from "primeng/table";
+import { MessagesModule } from 'primeng/messages';
 @NgModule({
   declarations: [],
   imports: [
@@ -17,7 +20,10 @@ import { DividerModule } from 'primeng/divider';
     InputTextModule,
     CardModule,
     PanelModule,
-    DividerModule
+    DividerModule,
+    DialogModule,
+    TableModule,
+    MessagesModule
   ]
 })
 export class PrimeNgModule { }
