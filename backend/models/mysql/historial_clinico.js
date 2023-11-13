@@ -1,5 +1,8 @@
 const {sequelize} = require("../../config/mysql");
 const { DataTypes } = require("sequelize");
+const Usuario = require('../mysql/users')
+const Tratamiento = require("../mysql/tratamiento")
+
 
 const HistorialClinico = sequelize.define(
     "historial_clinico",
@@ -25,5 +28,10 @@ const HistorialClinico = sequelize.define(
         timestamps: false, // Esto agrega campos createdAt y updatedAt a la tabla.
     }
 );
+
+// Define las asociaciones con los modelos de Paciente y Tratamiento
+HistorialClinico.belongsTo(Usuario, { foreignKey: "id_paciente", as: "paciente" });
+HistorialClinico.belongsTo(Tratamiento, { foreignKey: "id_tratamiento", as: "tratamiento" });
+
 
 module.exports = HistorialClinico;

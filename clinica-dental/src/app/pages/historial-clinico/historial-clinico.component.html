@@ -1,0 +1,9 @@
+<div *ngFor="let historial of historialesClinicos">
+    <h3>Historial Clínico #{{ historial.id }}</h3>
+    <p>Fecha: {{ historial.fecha }}</p>
+    <p>Nota: {{ historial.nota }}</p>
+    <p>Paciente: {{ historial.paciente?.user?.nombre }}</p>
+    <p>Tratamiento: {{ historial.tratamiento?.nombre }}</p>
+    <!-- Agrega más detalles según tus necesidades -->
+  </div>
+  

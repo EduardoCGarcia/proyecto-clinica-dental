@@ -8,6 +8,7 @@ import { CitaComponent } from './pages/cita/cita.component';
 import { FacturaComponent } from './pages/factura/factura.component';
 import { TratamientoComponent } from './pages/tratamiento/tratamiento.component';
 import { PagoComponent } from './pages/pago/pago.component';
+import { HistorialClinicoComponent } from './pages/historial-clinico/historial-clinico.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'facturas', component: FacturaComponent },
   { path: 'tratamientos', component: TratamientoComponent },
   { path: 'pagos/:idFactura', component: PagoComponent },
+  { path: 'historial-clinco/:idPaciente', component: HistorialClinicoComponent },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
 ];
 

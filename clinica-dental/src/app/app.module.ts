@@ -13,9 +13,11 @@ import { CitaModule } from './pages/cita/cita.module';
 import { FacturaModule } from './pages/factura/factura.module';
 import { TratamientoModule } from './pages/tratamiento/tratamiento.module';
 import { PagoModule } from './pages/pago/pago.module';
+import { HistorialClinicoModule } from './pages/historial-clinico/historial-clinico.module';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { PagoModule } from './pages/pago/pago.module';
     CitaModule,
     FacturaModule,
     TratamientoModule,
-    PagoModule
+    PagoModule,
+    HistorialClinicoModule
   ],
   providers: [],
   bootstrap: [AppComponent]
