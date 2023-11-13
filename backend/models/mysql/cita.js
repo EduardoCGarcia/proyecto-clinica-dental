@@ -1,5 +1,7 @@
-const {sequelize} = require("../../config/mysql");
+const { sequelize } = require("../../config/mysql");
 const { DataTypes } = require("sequelize");
+
+const Usuario = require('../mysql/users')
 
 const Cita = sequelize.define(
     "cita",
@@ -29,7 +31,7 @@ const Cita = sequelize.define(
             allowNull: true
         },
         rol_consulta: {
-            type: DataTypes.ENUM('cita','urgencia'),
+            type: DataTypes.ENUM('cita', 'urgencia'),
             allowNull: true
         }
     },
@@ -37,5 +39,8 @@ const Cita = sequelize.define(
         timestamps: false, // Esto agrega campos createdAt y updatedAt a la tabla.
     }
 );
+
+Cita.belongsTo(Usuario, { foreignKey: "id_dentista", as: "Dentista" });
+Cita.belongsTo(Usuario, { foreignKey: "id_paciente", as: "Paciente" });
 
 module.exports = Cita;
