@@ -1,0 +1,7 @@
+<h2>Lista de Pagos</h2>
+
+<ul>
+  <li *ngFor="let pago of pagos">
+    {{ pago.id }} - {{ pago.fecha | date:'short' }} - {{ pago.monto | currency:'USD':'symbol':'1.2-2' }} - {{ pago.forma_de_pago }}
+  </li>
+</ul>
