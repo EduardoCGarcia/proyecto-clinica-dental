@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, catchError, map, of, throwError } from 'rxjs';
-import { Usuario, UsuarioLogIn } from '../interfaces/usuario';
+import { Usuario, UsuarioLogIn, UsuarioSignUp } from '../interfaces/usuario';
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 
@@ -67,6 +67,18 @@ export class AuthService {
       )
   }
 
+  signup(authData: UsuarioSignUp): Observable<Usuario | void> {
+    return this.http
+      .post<Usuario>(`${this.AUTH_SERVER}/signup`, authData)
+      .pipe(
+        map((user: Usuario) => {
+          this.user.next(user);
+          return user;
+        }),
+        catchError((error) => this.handleError(error))
+      )
+  }
+  
   getRole(): Observable<string | null> {
     const user = this.getUserFromLocalStorage();
     return of(user ? user.user.rol.toUpperCase() : null);

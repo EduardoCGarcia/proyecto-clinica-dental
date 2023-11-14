@@ -1,18 +1,41 @@
-<form>
-    <label>nombre</label>
-    <input type="text">
+<form 
+[formGroup]="userForm"
+(ngSubmit)="onSignUp()"
+>
+    <label>nombre</label> 
+    <input type="text"
+    formControlName="nombre">
     <label>pap</label>
-    <input type="text">
+    <input type="text"
+    formControlName="primerApellido">
     <label>sap</label>
-    <input type="text">
+    <input type="text"
+    formControlName="segundoApellido">
+    <label>email</label>
+    <input type="email"
+    formControlName="email">
     <label>fechaNacimiento</label>
-    <input type="date">
+    <input type="date"
+    formControlName="fechaNacimiento">
     <label>direccion</label>
-    <input type="text">
+    <input type="text"
+    formControlName="direccion">
     <label>telefono</label>
-    <input type="text">
+    <input type="text"
+    formControlName="telefono">
     <label>rol</label>
-    <input type="text">
+    <input type="text"
+    formControlName="rol">
     <label>cedula</label>
-    <input type="text">
+    <input type="text"
+    formControlName="cedula">
+    <label>password</label>
+    <input type="password"
+    formControlName="pass">
+    <p-button 
+    label="Sign Up" 
+    icon="pi pi-user" 
+    styleClass="w-10rem mx-auto" 
+    type="submit"></p-button>
+
 </form>
