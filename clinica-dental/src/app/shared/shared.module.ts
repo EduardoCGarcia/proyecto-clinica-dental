@@ -6,6 +6,7 @@ import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { MenuBarComponent } from './menu-bar/menu-bar.component';
     HomeComponent,
     NotFoundComponent,
     MenuBarComponent,
+    CardComponent,
   ],
   imports: [
     CommonModule,

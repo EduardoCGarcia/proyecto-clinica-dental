@@ -17,3 +17,16 @@ export interface UsuarioLogIn {
     email: string;
     pass: string;
 }
+
+export interface UsuarioSignUp {
+    nombre: string;
+    primerApellido: string;
+    segundoApellido: string;
+    email: string;
+    fechaNacimiento: string;
+    direccion: string;
+    telefono: string;
+    rol: string;
+    cedula: string;
+    pass: string;
+}
