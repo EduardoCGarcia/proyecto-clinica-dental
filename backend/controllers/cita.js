@@ -1,6 +1,7 @@
 const { matchedData } = require("express-validator");
 const models = require("../models");
 const citasModel = models.citasModel;
+const Usuario = models.usersModel;
 
 
 const createAppointment = async (req, res) => {
@@ -19,15 +20,29 @@ const createAppointment = async (req, res) => {
 
 const getAppointments = async (req, res) => {
     try {
-        
-        const dataAppointments =  await citasModel.findAll()
-
-        return res.status(400).send(dataAppointments);
+        const dataAppointments = await citasModel.findAll({
+            attributes:['id','rol_consulta'],
+            include: [
+                {
+                    model: Usuario,
+                    as: 'Paciente', // Alias para el usuario asociado como paciente
+                    attributes: ['nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                },
+                {
+                    model: Usuario,
+                    as: 'Dentista', // Alias para el usuario asociado como dentista
+                    attributes: ['nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                },
+            ],
+        });
+        return res.status(200).send(dataAppointments);
 
     } catch (error) {
-        return res.status(500).send("Error interno del servidor: " + error); // This will send a response to the client indicating that there was an error creating the appointment and will include the
+        console.log(error);
+        return res.status(500).send("Error interno del servidor: " + error);
     }
 }
+
 const getAppointment = async (req, res) => {
     try {
 

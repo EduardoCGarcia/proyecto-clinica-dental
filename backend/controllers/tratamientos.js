@@ -27,7 +27,7 @@ const getTratamientos = async (req, res) => {
         
         const dataTratamientos =  await tratamientosModel.findAll()
 
-        return res.status(400).send(dataTratamientos);
+        return res.status(200).send(dataTratamientos);
 
     } catch (error) {
         return res.status(500).send("Error interno del servidor: " + error); // This will send a response to the client indicating that there was an error creating the appointment and will include the

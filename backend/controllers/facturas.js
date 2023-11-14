@@ -21,7 +21,7 @@ const getFacturas = async (req, res) => {
         
         const dataFacturas =  await facturasModel.findAll()
 
-        return res.status(400).send(dataFacturas);
+        return res.status(200).send(dataFacturas);
 
     } catch (error) {
         return res.status(500).send("Error interno del servidor: " + error);

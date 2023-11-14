@@ -1,8 +1,8 @@
 <header>
     <div class="container__menu">
-      <div class="logo">
+      <div class="logo"  routerLink="home">
         <img src="./assets/diente.png" class="logo" />
-        
+        <span id="name_web">AgendaSonrisas</span>
       </div>
       <div class="menu">
         <i 
@@ -19,28 +19,57 @@
         (click)="ocultarMenu()"
         #btnMenuClose
         ></i>
+      
         
         <nav id="nav" #nav>
-          <ng-container>
+          <ng-container *ngIf="role === 'PACIENTE'; else notPaciente">
+            <!-- Menú para PACIENTE -->
             <ul>
-              <li><a id="item" routerLink="home">inicio</a></li>
-              <li><a id="item" routerLink="citas">citas</a></li>
-              <li><a id="item" routerLink="pacientes">pacientes</a></li>
-              <li><a id="item" routerLink="personal">personal</a></li>
-              <li><a id="item" routerLink="login">Login</a></li>
+              <li><a class="item" routerLink="home">Inicio</a></li>
+              <li><a class="item" routerLink="citas">Mis Citas</a></li>
+              <li><a class="item" routerLink="tratamientos">Mis Tratamientos</a></li>
+              <li><a class="item" routerLink="login" (click)="logOut()">Logout</a></li>
             </ul>
           </ng-container>
+          <ng-template #notPaciente>
+        
+            <ng-container *ngIf="role === 'DENTISTA'; else notDentista">
+              <!-- Menú para DENTISTA -->
+              <ul>
+                <li><a class="item" routerLink="home">Inicio</a></li>
+                <li><a class="item" routerLink="citas">Agenda de Citas</a></li>
+                <li><a class="item" routerLink="pacientes">Mis Pacientes</a></li>
+                <li><a class="item" routerLink="login" (click)="logOut()">Logout</a></li>
+              </ul>
+            </ng-container>
+            <ng-template #notDentista>
+        
+              <ng-container *ngIf="role === 'ADMIN'; else notAdmin">
+                <!-- Menú para ADMINISTRADOR -->
+                <ul>
+                  <li><a class="item" routerLink="home">Inicio</a></li>
+                  <li><a class="item" routerLink="citas">Citas</a></li>
+                  <li><a class="item" routerLink="pacientes">Pacientes</a></li>
+                  <li><a class="item" routerLink="personal">Personal</a></li>
+                  <li><a class="item" routerLink="login" (click)="logOut()">Logout</a></li>
+                </ul>
+              </ng-container>
+              <ng-template #notAdmin>
+        
+                <!-- Menú para usuarios no autenticados -->
+                <ul>
+                  <li><a class="item" routerLink="home">Inicio</a></li>
+                  <li><a class="item" routerLink="citas">Citas</a></li>
+                  <li><a class="item" routerLink="pacientes">Tratamientos</a></li>
+                  <li><a class="item" routerLink="login">Login</a></li>
+                </ul>
+        
+              </ng-template>
+            </ng-template>
+          </ng-template>
         </nav>
+        
       </div>
     </div>
   </header>
   
-<!--   <ng-template #viewAdmin>
-    <ul>
-      <li><a href="#" routerLink="inicio">inicio</a></li>
-      <li><a href="#" routerLink="divulgadores">divulgadores</a></li>
-      <li><a href="#" routerLink="cientificos">Científicos</a></li>
-      <li><a href="#" routerLink="productos">productos</a></li>
-      <li><a href="#" routerLink="auth" id="selected">login</a></li>
-    </ul>
-  </ng-template> -->

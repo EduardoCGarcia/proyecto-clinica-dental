@@ -1,0 +1,7 @@
+<h2>Lista de Facturas</h2>
+
+<ul>
+  <li *ngFor="let factura of facturas">
+    {{factura.id}} - {{factura.fecha_emision}} - {{ factura.monto_total | currency:'USD': 'symbol': '1.2-2' }}
+  </li>
+</ul>

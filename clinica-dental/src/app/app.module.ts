@@ -9,6 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './pages/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
+import { CitaModule } from './pages/cita/cita.module';
+import { FacturaModule } from './pages/factura/factura.module';
+import { TratamientoModule } from './pages/tratamiento/tratamiento.module';
+import { PagoModule } from './pages/pago/pago.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -18,11 +22,15 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     BrowserAnimationsModule,
     CommonModule,
+    HttpClientModule,
     SharedModule,
     PrimeNgModule,
     FormsModule,
     AuthModule,
-    HttpClientModule
+    CitaModule,
+    FacturaModule,
+    TratamientoModule,
+    PagoModule
   ],
   providers: [],
   bootstrap: [AppComponent]

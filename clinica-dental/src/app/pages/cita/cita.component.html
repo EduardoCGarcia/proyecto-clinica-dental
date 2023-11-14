@@ -1,0 +1,32 @@
+<p-table [value]="citas" [selection]="selectedCita" (onRowSelect)="onSelectCita($event.data)">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Rol</th>
+      <th>Nombre del paciente</th>
+      <th>Apellidos</th>
+      <th>Telefono</th>
+      <th>Email</th>
+      <th>Notas</th>
+      <th>Opciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-cita>
+    <tr>
+      <td>{{ cita.rol_consulta }}</td>
+      <td>{{ cita.Paciente.nombre }}</td>
+      <td>{{ cita.Paciente.primerApellido + " " + cita.Paciente.segundoApellido}}</td>
+      <td>{{ cita.Paciente.telefono}}</td>
+      <td>{{ cita.Paciente.email}}</td>
+      <td>{{ cita.Paciente?.notas}}</td>
+      <td>
+        <button pButton type="button" icon="pi pi-pencil" (click)="onSelectCita(cita)"></button>
+        <button pButton type="button" icon="pi pi-trash" (click)="onDeleteCita(cita.id)"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-dialog header="Detalles de Cita" [(visible)]="visible" [modal]="true" [responsive]="true">
+  <div *ngIf="selectedCita">
+  </div>
+</p-dialog>
