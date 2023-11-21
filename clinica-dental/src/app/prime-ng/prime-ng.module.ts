@@ -9,6 +9,9 @@ import { DividerModule } from 'primeng/divider';
 import { DialogModule } from "primeng/dialog";
 import { TableModule } from "primeng/table";
 import { MessagesModule } from 'primeng/messages';
+import { AccordionModule } from "primeng/accordion";
+import { CarouselModule } from "primeng/carousel";
+import { GalleriaModule } from "primeng/galleria";
 @NgModule({
   declarations: [],
   imports: [
@@ -23,7 +26,10 @@ import { MessagesModule } from 'primeng/messages';
     DividerModule,
     DialogModule,
     TableModule,
-    MessagesModule
+    MessagesModule,
+    AccordionModule,
+    CarouselModule,
+    GalleriaModule,
   ]
 })
 export class PrimeNgModule { }
