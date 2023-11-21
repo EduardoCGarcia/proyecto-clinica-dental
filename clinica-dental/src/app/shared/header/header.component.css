@@ -52,8 +52,9 @@ header {
 
 .menu ul li a {
     text-decoration: none;
-    font-size: 16px;
-    color: #fff;
+    font-size: 19px;
+    color: rgb(17, 120, 198);
+    font-weight: 500;
     text-transform: uppercase;
 }
 
@@ -61,18 +62,6 @@ header {
     display: none;
     z-index: 10;
 }
-
-.item {
-    text-decoration: none;
-    background: rgb(2, 0, 36);
-    background: rgb(59, 255, 255);
-    font-size: 1.1rem;
-
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-}
-
-
 
 /*responsive*/
 
@@ -152,8 +141,8 @@ header {
     text-decoration: none;
     background: rgb(2, 0, 36);
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(2, 0, 36, 1) 0%, rgba(57, 144, 93, 1) 0%, rgba(0, 212, 255, 1) 100%);
-    font-size: 2rem;
-
+    font-size: 2.2rem;
+    font-weight: 1000;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
