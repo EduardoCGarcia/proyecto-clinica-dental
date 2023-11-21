@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { CardComponent } from './card/card.component';
+import { GaleriaComponent } from './galeria/galeria.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { CardComponent } from './card/card.component';
     NotFoundComponent,
     MenuBarComponent,
     CardComponent,
+    GaleriaComponent,
   ],
   imports: [
     CommonModule,
