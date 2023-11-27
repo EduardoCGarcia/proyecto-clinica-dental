@@ -29,13 +29,14 @@ export class CalendarioComponent implements OnInit{
     this.citaSvc.getAppointments().subscribe(
       (data) => {
         var lista: { title: string; start: Date; end: Date; }[] = []
+        console.log(data);
         data.forEach(element => {
         let horaInicio = element.hora.toString().split(":")
         let fecha = element.fecha.toString().split("-");
         let item = {
           title: "Cita de "+ element.Paciente.nombre,
-          start: new Date(Number(fecha[2]),Number(fecha[1])-1,Number(fecha[0]),Number(horaInicio[0]),Number(horaInicio[1])),
-          end: new Date(Number(fecha[2]),Number(fecha[1])-1,Number(fecha[0]),Number(horaInicio[0]),59)
+          start: new Date(Number(fecha[0]),Number(fecha[1])-1,Number(fecha[2]),Number(horaInicio[0]),Number(horaInicio[1])),
+          end: new Date(Number(fecha[0]),Number(fecha[1])-1,Number(fecha[2]),Number(horaInicio[0]),59)
         }
         console.log(item);
         lista.push(item);
