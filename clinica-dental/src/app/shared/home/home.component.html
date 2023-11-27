@@ -13,24 +13,4 @@
             </div>
         </ng-template>
     </p-galleria>
-    <div class="card pt-5">
-        <p-carousel [value]="tratamientos" [numVisible]="4" [numScroll]="4" [circular]="true" [responsiveOptions]="responsiveOptions" [autoplayInterval]="2000">
-            <ng-template let-tratamiento pTemplate="item">
-                <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
-                    <div class="mb-3">
-                        <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ tratamiento.image }}" [alt]="tratamiento.nombre" class="w-6 shadow-2" />
-                    </div>
-                    <div style="max-height: 150px; overflow: hidden;">
-                        <h4 class="mb-1">{{ tratamiento.nombre }}</h4>
-                        <div class="car-buttons mt-5">
-                            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
-                            <p-button type="button" styleClass="p-button-success p-button-rounded mr-2" icon="pi pi-star-fill"></p-button>
-                        </div>
-                    </div>
-                </div>
-            </ng-template>
-        </p-carousel>
-        
-
-    </div>
 </div>
