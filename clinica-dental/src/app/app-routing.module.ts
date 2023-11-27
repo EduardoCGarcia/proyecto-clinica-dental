@@ -9,6 +9,7 @@ import { FacturaComponent } from './pages/factura/factura.component';
 import { TratamientoComponent } from './pages/tratamiento/tratamiento.component';
 import { PagoComponent } from './pages/pago/pago.component';
 import { HistorialClinicoComponent } from './pages/historial-clinico/historial-clinico.component';
+import { GaleriaComponent } from './shared/galeria/galeria.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'tratamientos', component: TratamientoComponent },
   { path: 'pagos/:idFactura', component: PagoComponent },
   { path: 'historial-clinco/:idPaciente', component: HistorialClinicoComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
 ];
 
