@@ -5,6 +5,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-calendario',
@@ -22,7 +23,9 @@ export class CalendarioComponent implements OnInit{
   public options : any;
   apointments: Cita[] = [];
 
-  constructor(private citaSvc:CitaService) { 
+  rol : string | null = null
+
+  constructor(private citaSvc:CitaService, private authSvc:AuthService) { 
   }
 
   ngOnInit() {
@@ -70,7 +73,11 @@ export class CalendarioComponent implements OnInit{
       ]
     
     }
-    
+
+
+    this.authSvc.getRole().subscribe((role)=>{
+      this.rol=role
+    });
   }
 
 }
