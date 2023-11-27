@@ -26,12 +26,72 @@ const getAppointments = async (req, res) => {
                 {
                     model: Usuario,
                     as: 'Paciente', // Alias para el usuario asociado como paciente
-                    attributes: ['nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
                 },
                 {
                     model: Usuario,
                     as: 'Dentista', // Alias para el usuario asociado como dentista
-                    attributes: ['nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                },
+            ],
+        });
+        return res.status(200).send(dataAppointments);
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor: " + error);
+    }
+}
+
+const getAppointmentsByDentista = async (req, res) => {
+    try {
+        const { id } = matchedData(req);
+
+        const dataAppointments = await citasModel.findAll({
+            attributes:['id','rol_consulta','fecha','hora'],
+            include: [
+                {
+                    model: Usuario,
+                    as: 'Paciente', // Alias para el usuario asociado como paciente
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                },
+                {
+                    model: Usuario,
+                    as: 'Dentista', // Alias para el usuario asociado como dentista
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                    where: {
+                        id:id
+                    }
+                },
+            ],
+        });
+        return res.status(200).send(dataAppointments);
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor: " + error);
+    }
+}
+
+const getAppointmentsByPaciente = async (req, res) => {
+    try {
+        const { id } = matchedData(req);
+
+        const dataAppointments = await citasModel.findAll({
+            attributes:['id','rol_consulta','fecha','hora'],
+            include: [
+                {
+                    model: Usuario,
+                    as: 'Paciente', // Alias para el usuario asociado como paciente
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                    where: {
+                        id:id
+                    }
+                },
+                {
+                    model: Usuario,
+                    as: 'Dentista', // Alias para el usuario asociado como dentista
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
                 },
             ],
         });
@@ -101,7 +161,9 @@ const deleteAppointment = async (req, res) => {
 module.exports = { 
     createAppointment, 
     getAppointment, 
-    getAppointments, 
+    getAppointments,
+    getAppointmentsByDentista,
+    getAppointmentsByPaciente,
     putAppointment,
     deleteAppointment,
 }
