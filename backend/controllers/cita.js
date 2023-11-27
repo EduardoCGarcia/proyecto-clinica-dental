@@ -21,7 +21,7 @@ const createAppointment = async (req, res) => {
 const getAppointments = async (req, res) => {
     try {
         const dataAppointments = await citasModel.findAll({
-            attributes:['id','rol_consulta','fecha'],
+            attributes:['id','rol_consulta','fecha','hora'],
             include: [
                 {
                     model: Usuario,
