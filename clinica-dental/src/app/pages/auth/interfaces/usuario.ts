@@ -13,6 +13,27 @@ export interface Usuario {
     }
 }
 
+export interface Paciente{
+    id: number;
+    nombre: string;
+    primerApellido: string;
+    segundoApellido: string;
+    telefono: string;
+    email: string;
+    notas: string;
+}
+
+export interface Dentista{
+    id: number;
+    nombre: string;
+    primerApellido: string;
+    segundoApellido: string;
+    telefono: string;
+    email: string;
+    notas: string;
+    cedula: string|null;
+}
+
 export interface UsuarioLogIn {
     email: string;
     pass: string;

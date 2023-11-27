@@ -1,6 +1,9 @@
+import { Dentista, Paciente, Usuario } from "../../auth/interfaces/usuario";
+
 export interface Cita {
-    id_dentista: number;
-    id_paciente: number;
+    id: number;
+    Dentista: Dentista;
+    Paciente: Paciente;
     fecha: Date;
     hora: string;
     motivo?: string;
