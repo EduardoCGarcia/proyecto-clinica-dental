@@ -1,5 +1,12 @@
-<p-table [columns]="cols" [value]="items" [tableStyle]="tableStyle" [paginator]="true" [rows]="3"
-    [showCurrentPageReport]="true">
+<p-table 
+    [columns]="cols" 
+    [value]="items" 
+    [tableStyle]="tableStyle" 
+    [paginator]="paginator" 
+    [rows]="rows"
+    [showCurrentPageReport]="true" 
+    styleClass="p-datatable-gridlines">
+    
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th *ngFor="let col of columns">

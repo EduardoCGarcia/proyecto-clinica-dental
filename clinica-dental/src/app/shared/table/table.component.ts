@@ -10,6 +10,8 @@ export class TableComponent {
   @Input('filas') items!: any[];
   @Input('columnas') cols!: any[];
   @Input('tableStyle') tableStyle!: any;
+  @Input('paginator') paginator: boolean = false;
+  @Input('rows') rows !: number;
 
   constructor() { }
 
