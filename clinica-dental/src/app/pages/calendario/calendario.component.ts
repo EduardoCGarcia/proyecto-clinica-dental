@@ -28,8 +28,19 @@ export class CalendarioComponent implements OnInit{
   ngOnInit() {
     this.citaSvc.getAppointments().subscribe(
       (data) => {
-        this.apointments = data;
-        console.log(this.apointments);
+        var lista: { title: string; start: Date; end: Date; }[] = []
+        data.forEach(element => {
+        let horaInicio = element.hora.toString().split(":")
+        let fecha = element.fecha.toString().split("-");
+        let item = {
+          title: "Cita de "+ element.Paciente.nombre,
+          start: new Date(Number(fecha[2]),Number(fecha[1])-1,Number(fecha[0]),Number(horaInicio[0]),Number(horaInicio[1])),
+          end: new Date(Number(fecha[2]),Number(fecha[1])-1,Number(fecha[0]),Number(horaInicio[0]),59)
+        }
+        console.log(item);
+        lista.push(item);
+      });
+      this.citas = lista;
       }
     );
 
@@ -43,6 +54,7 @@ export class CalendarioComponent implements OnInit{
         center: 'title',
         right: 'dayGridMonth,timeGridWeek,timeGridDay'
       },
+      events: this.citas,
       businessHours: [
       {
         daysOfWeek: [ 1, 2, 3, 4, 5], // dias de semana, 0=Domingo
@@ -54,10 +66,7 @@ export class CalendarioComponent implements OnInit{
         startTime: '9:00', // hora final
         endTime: '20:00', // hora inicial
       }
-      ],
-      editable: true,
-      selectable:true,
-      selectMirror: true,
+      ]
     
     }
     
