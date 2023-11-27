@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CitaComponent } from './cita.component';
 import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
-import { CitaService } from './services/cita.service';
+import { SharedModule } from '../../shared/shared.module';
+import { TableComponent } from 'src/app/shared/table/table.component';
 
 
 
@@ -12,7 +13,8 @@ import { CitaService } from './services/cita.service';
   ],
   imports: [
     CommonModule,
-    PrimeNgModule
+    PrimeNgModule,
+    SharedModule
   ],
   exports:[
     CitaComponent

@@ -1,3 +1,26 @@
+<p-splitter [panelSizes]="[30, 70]" styleClass="m-5">
+  <ng-template pTemplate>
+    <app-table [filas]="citas" [columnas]="cols" [tableStyle]="{ 'width': '26rem' }"></app-table>
+  </ng-template>
+  <ng-template pTemplate>
+      <p-splitter layout="vertical" [panelSizes]="[15, 85]">
+          <ng-template pTemplate>
+              <div style="flex-grow: 1;" class="flex align-items-center justify-content-center">Panel 2</div>
+          </ng-template>
+          <ng-template pTemplate>
+              <p-splitter [panelSizes]="[20, 80]">
+                  <ng-template pTemplate>
+                      <div class="col flex align-items-center justify-content-center">Panel 3</div>
+                  </ng-template>
+                  <ng-template pTemplate>
+                      <div class="col flex align-items-center justify-content-center">Panel 4</div>
+                  </ng-template>
+              </p-splitter>
+          </ng-template>
+      </p-splitter>
+  </ng-template>
+</p-splitter>
+
 <p-table [value]="citas" [selection]="selectedCita" (onRowSelect)="onSelectCita($event.data)">
   <ng-template pTemplate="header">
     <tr>
@@ -30,3 +53,4 @@
   <div *ngIf="selectedCita">
   </div>
 </p-dialog>
+
