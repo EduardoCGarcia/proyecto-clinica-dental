@@ -29,6 +29,10 @@ import { TableComponent } from './table/table.component';
     HeaderComponent,
     FooterComponent,
     MenuBarComponent,
+    MenuBarComponent,
+    CardComponent,
+    GaleriaComponent,
+    TableComponent,
   ]
 })
 export class SharedModule { }
