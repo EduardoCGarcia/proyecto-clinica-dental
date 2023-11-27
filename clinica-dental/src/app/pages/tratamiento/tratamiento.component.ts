@@ -8,7 +8,26 @@ import { TratamientoService } from './service/tratamiento.service';
   styleUrls: ['./tratamiento.component.css']
 })
 export class TratamientoComponent implements OnInit {
+
   tratamientos!: Tratamiento[];
+
+  responsiveOptions: any[] = [
+    {
+      breakpoint: '1150px',
+      numVisible: 3,
+      numScroll: 1
+    },
+    {
+      breakpoint: '850px',
+      numVisible: 2,
+      numScroll: 1
+    },
+    {
+      breakpoint: '600px',
+      numVisible: 1,
+      numScroll: 1
+    },
+  ];
 
   constructor(private tratamientoService: TratamientoService) { }
 

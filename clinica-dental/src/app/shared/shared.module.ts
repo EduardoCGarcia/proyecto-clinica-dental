@@ -8,6 +8,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { CardComponent } from './card/card.component';
 import { GaleriaComponent } from './galeria/galeria.component';
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { GaleriaComponent } from './galeria/galeria.component';
     MenuBarComponent,
     CardComponent,
     GaleriaComponent,
+    TableComponent,
   ],
   imports: [
     CommonModule,
