@@ -16,7 +16,6 @@ export class TableComponent {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.items);
-
+    
   }
 }
