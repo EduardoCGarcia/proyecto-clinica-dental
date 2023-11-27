@@ -32,7 +32,6 @@ export class AuthService {
     const user = this.getUserFromLocalStorage();
     if (user) {
       this.loggedIn.next(true);
-      console.log(user);
       this.user.next(user);
       if (user.user.rol.toUpperCase() ==='ADMIN') {
         this.isAdmin.next(true);
@@ -49,6 +48,10 @@ export class AuthService {
     return this.isAdmin.asObservable();
   }
 
+  get user$(): Observable<Usuario | null> {
+    return this.user.asObservable();
+  }
+
   login(authData: UsuarioLogIn): Observable<Usuario | void> {
     return this.http
       .post<Usuario>(`${this.AUTH_SERVER}/login`, authData)
@@ -56,6 +59,7 @@ export class AuthService {
         map((user: Usuario) => {
           this.user.next(user);
           this.saveLocalStorage(user)
+          this.user.next(user)
           this.loggedIn.next(true);
 
           if (user.user.rol.toUpperCase() === 'ADMIN') {

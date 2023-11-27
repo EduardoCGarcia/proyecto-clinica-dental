@@ -19,12 +19,12 @@ export class CitaService {
     return this.http.get<Cita[]>(this.apiUrl);
   }
 
-  getAppointmentsByDentista(): Observable<Cita[]> {
-    return this.http.get<Cita[]>(`${this.apiUrl}/byDentista/:id`);
+  getAppointmentsByDentista(id: number): Observable<Cita[]> {
+    return this.http.get<Cita[]>(`${this.apiUrl}/byDentista/${id}`);
   }
 
-  getAppointmentsByPaciente(): Observable<Cita[]> {
-    return this.http.get<Cita[]>(`${this.apiUrl}/byPaciente/:id`);
+  getAppointmentsByPaciente(id: number): Observable<Cita[]> {
+    return this.http.get<Cita[]>(`${this.apiUrl}/byPaciente/${id}`);
   }
 
   updateCita(id: number, cita: Cita): Observable<Cita> {

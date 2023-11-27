@@ -1,6 +1,7 @@
 export interface Usuario {
     token: string;
     user: {
+        id:number;
         nombre: string;
         primerApellido: string;
         segundoApellido: string;
