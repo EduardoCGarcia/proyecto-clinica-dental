@@ -9,11 +9,12 @@ export class TableComponent {
 
   @Input('filas') items!: any[];
   @Input('columnas') cols!: any[];
+  @Input('tableStyle') tableStyle!: any;
 
   constructor() { }
 
   ngOnInit() {
     console.log(this.items);
-    
+
   }
 }

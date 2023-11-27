@@ -1,4 +1,5 @@
-<p-table [columns]="cols" [value]="items" [tableStyle]="{ 'max-width': '50rem' }">
+<p-table [columns]="cols" [value]="items" [tableStyle]="tableStyle" [paginator]="true" [rows]="3"
+    [showCurrentPageReport]="true">
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th *ngFor="let col of columns">
@@ -14,5 +15,3 @@
         </tr>
     </ng-template>
 </p-table>
-
-
