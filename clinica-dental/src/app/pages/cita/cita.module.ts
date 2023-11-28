@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DropdownModule } from 'primeng/dropdown';
 import { CitaComponent } from './cita.component';
 import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
 import { SharedModule } from '../../shared/shared.module';
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     PrimeNgModule,
     SharedModule,
     CalendarioModule,
-    FormsModule
+    FormsModule,
+    DropdownModule
   ],
   exports:[
     CitaComponent
