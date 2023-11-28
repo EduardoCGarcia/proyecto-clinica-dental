@@ -13,6 +13,12 @@ export class CitaComponent {
   citas: Cita[] = [];
   visible: boolean = false;
   selectedCita!: Cita;
+  cols = [
+    { field: 'fecha', header: 'Fecha' },
+    { field: 'hora', header: 'Hora' },
+    { field: 'motivo', header: 'Motivo' },
+    { field: 'rol_consulta', header: 'Tipo' }
+];
 
   constructor(
     private citaSvc: CitaService,

@@ -1,6 +1,7 @@
 export interface Usuario {
     token: string;
     user: {
+        id:number;
         nombre: string;
         primerApellido: string;
         segundoApellido: string;
@@ -11,6 +12,27 @@ export interface Usuario {
         rol: 'admin' | 'dentista' | 'paciente'; // Definimos el tipo de rol como un string literal
         cedula: string | null; // Permitimos valores nulos para cédula
     }
+}
+
+export interface Paciente{
+    id: number;
+    nombre: string;
+    primerApellido: string;
+    segundoApellido: string;
+    telefono: string;
+    email: string;
+    notas: string;
+}
+
+export interface Dentista{
+    id: number;
+    nombre: string;
+    primerApellido: string;
+    segundoApellido: string;
+    telefono: string;
+    email: string;
+    notas: string;
+    cedula: string|null;
 }
 
 export interface UsuarioLogIn {

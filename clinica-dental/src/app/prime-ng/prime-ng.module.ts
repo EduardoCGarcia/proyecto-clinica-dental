@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonModule  } from "primeng/button";
+import { ButtonModule } from "primeng/button";
 import { MenubarModule } from "primeng/menubar";
 import { InputTextModule } from "primeng/inputtext";
 import { CardModule } from "primeng/card";
@@ -12,6 +12,9 @@ import { MessagesModule } from 'primeng/messages';
 import { AccordionModule } from "primeng/accordion";
 import { CarouselModule } from "primeng/carousel";
 import { GalleriaModule } from "primeng/galleria";
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
+import { SplitterModule } from 'primeng/splitter';
 @NgModule({
   declarations: [],
   imports: [
@@ -30,6 +33,9 @@ import { GalleriaModule } from "primeng/galleria";
     AccordionModule,
     CarouselModule,
     GalleriaModule,
+    AvatarModule,
+    AvatarGroupModule,
+    SplitterModule
   ]
 })
 export class PrimeNgModule { }
