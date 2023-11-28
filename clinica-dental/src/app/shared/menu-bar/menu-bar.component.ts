@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -7,14 +7,9 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./menu-bar.component.css']
 })
 export class MenuBarComponent {
-  items: MenuItem[] | undefined;
+  @Input('items') items: MenuItem[] | undefined;
 
   ngOnInit() {
-    this.items = [
-      {
-        label: 'Inicio',
-        icon: 'pi pi-home'
-      }
-    ]
+    
   }
 }
