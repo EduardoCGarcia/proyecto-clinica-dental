@@ -13,6 +13,10 @@ export class CitaComponent {
   citas: Cita[] = [];
   visible: boolean = false;
   selectedCita!: Cita;
+  public options: any;
+
+  value:string = ""
+
   cols = [
     { field: 'fecha', header: 'Fecha' },
     { field: 'hora', header: 'Hora' },

@@ -3,18 +3,21 @@ import { CommonModule } from '@angular/common';
 import { CitaComponent } from './cita.component';
 import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
 import { SharedModule } from '../../shared/shared.module';
-import { TableComponent } from 'src/app/shared/table/table.component';
+import { CalendarioModule } from '../calendario/calendario.module';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    CitaComponent
+    CitaComponent,
   ],
   imports: [
     CommonModule,
     PrimeNgModule,
-    SharedModule
+    SharedModule,
+    CalendarioModule,
+    FormsModule
   ],
   exports:[
     CitaComponent

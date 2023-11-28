@@ -1,3 +1,28 @@
+<div class="container">
+    <p-card header="Registrate" [style]="{ width: '40vw'}" styleClass="m-5">
+        
+    </p-card>
+</div>
+
+<form 
+[formGroup]="userForm"
+(ngSubmit)="onSignUp()"
+>
+    
+    <p-button 
+    label="Sign Up" 
+    icon="pi pi-user" 
+    styleClass="w-10rem mx-auto" 
+    type="submit"></p-button>
+
+</form>
+
+
+
+
+
+
+
 <form 
 [formGroup]="userForm"
 (ngSubmit)="onSignUp()"

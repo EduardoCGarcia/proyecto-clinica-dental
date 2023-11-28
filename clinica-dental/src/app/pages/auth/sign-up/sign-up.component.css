@@ -1,3 +1,9 @@
 label{
     background-color: aliceblue;
 }
+
+.container{
+    background-color: aqua;
+    display: flex;
+    justify-content: center;
+}

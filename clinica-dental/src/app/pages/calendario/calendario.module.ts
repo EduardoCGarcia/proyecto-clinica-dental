@@ -14,7 +14,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
       FullCalendarModule
     ],
     exports:[
-      
+      CalendarioComponent
     ]
   })
   export class CalendarioModule { }
