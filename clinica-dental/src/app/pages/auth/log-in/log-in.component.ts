@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class LogInComponent implements OnInit{
 
   usuario:UsuarioLogIn = {
-    email: "echavezg200@gmail.com",
+    email: "echavezg004@gmail.com",
     pass: "12345678"
   }
 
