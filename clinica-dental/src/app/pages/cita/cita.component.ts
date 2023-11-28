@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Cita } from './interfaces/cita';
 import { CitaService } from './services/cita.service';
 import { Message, MessageService } from 'primeng/api';
+import { AuthService } from '../auth/services/auth.service';
 
 @Component({
   selector: 'app-cita',
@@ -26,9 +27,15 @@ export class CitaComponent {
 
   constructor(
     private citaSvc: CitaService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private userSvc: AuthService
   ) {
     this.loadAppointments();
+
+  }
+
+  loadPacientes(): void{
+    
   }
 
   loadAppointments(): void {
