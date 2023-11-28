@@ -14,6 +14,9 @@ export class FacturaService {
   getFacturas(): Observable<Factura[]> {
     return this.http.get<Factura[]>(this.apiUrl);
   }
+  getFacturasParms(rol:string|undefined,id:number|undefined): Observable<Factura[]> {
+    return this.http.get<Factura[]>(`${this.apiUrl}/filter?rol=${rol}&id=${id}`);
+  }
 
   getFactura(id: number): Observable<Factura> {
     return this.http.get<Factura>(`${this.apiUrl}/${id}`);

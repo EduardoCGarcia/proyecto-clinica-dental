@@ -1,8 +1,8 @@
-<p>factura works!</p>
-<h2>Lista de Facturas</h2>
+<div class="container">
+  <div class="form_container pl-5 pr-5 pt-2 m-5 border-round-lg">
+    <h2>Lista de Facturas</h2>
+    <app-table [filas]="facturas" [columnas]="cols"></app-table>
+  </div>
+</div>
 
-<ul>
-  <li *ngFor="let factura of facturas">
-    {{factura.id}} - {{factura.fecha_emision}} - {{ factura.monto_total | currency:'USD': 'symbol': '1.2-2' }}
-  </li>
-</ul>
+

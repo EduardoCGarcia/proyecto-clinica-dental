@@ -1,3 +1,4 @@
+import { Dentista, Paciente } from '../../../auth/interfaces/usuario';
 export interface Factura {
     id: number;
     id_paciente: number;
@@ -5,4 +6,7 @@ export interface Factura {
     monto_total: number;
     saldo_deudor: number;
     estado: boolean;
+    id_dentista: number;
+    Dentista: Dentista,
+    Paciente: Paciente
 }

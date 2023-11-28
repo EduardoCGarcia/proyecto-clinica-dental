@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FacturaComponent } from './factura.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
@@ -11,7 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ]
 })
 export class FacturaModule { }
