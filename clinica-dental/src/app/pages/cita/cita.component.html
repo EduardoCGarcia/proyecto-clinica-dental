@@ -1,6 +1,16 @@
-<p-splitter [panelSizes]="[30, 70]" styleClass="m-5">
+<p-splitter [panelSizes]="[70, 70]" styleClass="m-5" [style]="{ height: '50vh' }">
   <ng-template pTemplate>
-    <app-table [filas]="citas" [columnas]="cols" [tableStyle]="{ 'width': '26rem' }"></app-table>
+    <div class="table_container">
+        <app-table 
+          [filas]="citas" 
+          [columnas]="cols" 
+          [tableStyle]="{ height : '100%' }"
+          [paginator]="true"
+          [rows]="7">
+        </app-table>
+    </div>
+    
+
   </ng-template>
   <ng-template pTemplate>
       <p-splitter layout="vertical" [panelSizes]="[15, 85]">
