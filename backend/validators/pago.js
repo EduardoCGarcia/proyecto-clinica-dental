@@ -8,7 +8,6 @@ const validatorAddPago = [
         .not()
         .isEmpty()
         .withMessage('El ID de la factura es requerido'),
-
     check('fecha')
         .custom(value => {
             if (isNaN(new Date(value).getTime())) {
