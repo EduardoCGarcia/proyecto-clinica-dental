@@ -2,6 +2,7 @@ const { matchedData } = require("express-validator");
 const facturasModel = require("../models").facturasModel;
 const TratamientoFactura = require('../models').tratamientoFacturasModel;
 const Pago = require('../models').pagosModel;
+const Usuario = require('../models').usersModel;
 
 const createFactura = async (req, res) => {
     //TODO Validar que los id existan
@@ -68,7 +69,15 @@ const createFactura = async (req, res) => {
 const getFacturas = async (req, res) => {
     try {
 
-        const dataFacturas = await facturasModel.findAll()
+        const dataFacturas = await facturasModel.findAll({
+            include:[
+                {
+                    model:Usuario,
+                    as: 'Paciente',
+                    attributes:['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'direccion','imagen']
+                }
+            ]
+        })
 
         return res.status(200).send(dataFacturas);
 
