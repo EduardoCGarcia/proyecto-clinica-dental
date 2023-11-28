@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './pages/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CitaModule } from './pages/cita/cita.module';
-import { FacturaModule } from './pages/factura/factura.module';
 import { TratamientoModule } from './pages/tratamiento/tratamiento.module';
 import { PagoModule } from './pages/pago/pago.module';
 import { HistorialClinicoModule } from './pages/historial-clinico/historial-clinico.module';
@@ -32,11 +31,10 @@ import { CalendarioModule } from './pages/calendario/calendario.module';
     FormsModule,
     AuthModule,
     CitaModule,
-    FacturaModule,
     TratamientoModule,
     PagoModule,
     HistorialClinicoModule,
-    CalendarioModule
+    CalendarioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
