@@ -2,8 +2,6 @@ const {sequelize} = require("../../config/mysql");
 const { DataTypes } = require("sequelize");
 const Usuario = require("./users");
 
-const Usuario = require('../mysql/users')
-
 const Factura = sequelize.define(
     "facturas",
     {
