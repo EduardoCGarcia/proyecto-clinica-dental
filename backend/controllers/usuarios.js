@@ -97,10 +97,8 @@ const getUsuario = async (req, res) => {
 }
 
 const getFilterUser = async (req, res) => {
-  console.log("fljskdbjfkbjsdhf");
   try {
-    const { rol, limit } = matchedData(req)
-    console.log(rol);
+    const { rol} = matchedData(req)
 
     const dataUsers = await Usuario.findAll({
       attributes: ['id',
@@ -115,8 +113,7 @@ const getFilterUser = async (req, res) => {
         'rol',
         'cedula', // Excluir 'cedula' si el rol es 'paciente'
         'imagen',],
-      where: { rol: rol },
-      limit: parseInt(limit, 10)
+      where: { rol: rol }
     });
 
     return res.status(200).json(dataUsers);
