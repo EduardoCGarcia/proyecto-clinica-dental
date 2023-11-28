@@ -2,6 +2,8 @@ const {sequelize} = require("../../config/mysql");
 const { DataTypes } = require("sequelize");
 const Usuario = require("./users");
 
+const Usuario = require('../mysql/users')
+
 const Factura = sequelize.define(
     "facturas",
     {
@@ -27,6 +29,10 @@ const Factura = sequelize.define(
             type: DataTypes.BOOLEAN,
             allowNull: true,
             defaultValue: 0
+        },
+        id_dentista: {
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
     },
     {
@@ -34,7 +40,7 @@ const Factura = sequelize.define(
     }
 );
 
+Factura.belongsTo(Usuario, { foreignKey: "id_dentista", as: "Dentista" });
 Factura.belongsTo(Usuario, { foreignKey: "id_paciente", as: "Paciente" });
-
 
 module.exports = Factura;

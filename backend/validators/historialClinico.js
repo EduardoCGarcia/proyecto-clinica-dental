@@ -29,7 +29,8 @@ const validatorAddToHistorialClinico = [
         .withMessage('La fecha es requerida'),
 
     check('nota')
-        .optional()
+        .exists()
+        .notEmpty()
         .isLength({ max: 255 })
         .withMessage('La nota no puede exceder los 255 caracteres'),
 

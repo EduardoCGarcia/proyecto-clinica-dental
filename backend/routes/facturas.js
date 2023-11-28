@@ -4,6 +4,7 @@ const {
     createFactura,
     getFactura,
     getFacturas,
+    getFilterFacturas,
     putFactura,
     deleteFactura
 } = require('../controllers/facturas');
@@ -13,12 +14,18 @@ const {
     validatorUpdateFactura 
 } = require('../validators/facturas');
 
-const {validatorIdParam} = require('../validators/idParam');
+const {validatorIdParam, validatorRolParam} = require('../validators/idParam');
 
 router.post(
     "/", 
     validatorCreateFactura, 
     createFactura);
+
+router.get(
+    "/filter", 
+    validatorIdParam,
+    validatorRolParam,
+    getFilterFacturas);
 
 router.get(
     "/:id", 
