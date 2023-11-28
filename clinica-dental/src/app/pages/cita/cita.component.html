@@ -1,33 +1,43 @@
-<p-splitter [panelSizes]="[70, 70]" styleClass="m-5" [style]="{ height: '50vh' }">
+<p-splitter [panelSizes]="[70, 70]" styleClass="m-5" [style]="{ height: '72vh' }">
   <ng-template pTemplate>
     <div class="table_container">
-        <app-table 
+      <!-- <app-table 
           [filas]="citas" 
           [columnas]="cols" 
           [tableStyle]="{ height : '100%' }"
           [paginator]="true"
           [rows]="7">
-        </app-table>
+        </app-table> -->
+      <app-calendario></app-calendario>
     </div>
-    
+
 
   </ng-template>
   <ng-template pTemplate>
-      <p-splitter layout="vertical" [panelSizes]="[15, 85]">
-          <ng-template pTemplate>
-              <div style="flex-grow: 1;" class="flex align-items-center justify-content-center">Panel 2</div>
-          </ng-template>
-          <ng-template pTemplate>
-              <p-splitter [panelSizes]="[20, 80]">
-                  <ng-template pTemplate>
-                      <div class="col flex align-items-center justify-content-center">Panel 3</div>
-                  </ng-template>
-                  <ng-template pTemplate>
-                      <div class="col flex align-items-center justify-content-center">Panel 4</div>
-                  </ng-template>
-              </p-splitter>
-          </ng-template>
-      </p-splitter>
+    <div class="form_container">
+      <div class="head_form">
+        <h3>Agendar una nueva cita</h3>
+      </div>
+      <div class="form_container">
+        <form>
+          <div class="formgrid grid m-4">
+            <div class="field col">
+                <label for="firstname2">Firstname</label>
+                <input id="firstname2" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+            <div class="field col">
+                <label for="lastname2">Lastname</label>
+                <input id="lastname2" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+            </div>
+        </div>
+          <span class="p-float-label">
+            <input pInputText id="username" [(ngModel)]="value" />
+            <label htmlFor="username">Username</label>
+            <h1>{{ value }}</h1>
+          </span>
+        </form>
+      </div>
+    </div>
   </ng-template>
 </p-splitter>
 
@@ -63,4 +73,3 @@
   <div *ngIf="selectedCita">
   </div>
 </p-dialog>
-

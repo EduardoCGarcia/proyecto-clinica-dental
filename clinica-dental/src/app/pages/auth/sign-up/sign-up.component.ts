@@ -15,12 +15,13 @@ export class SignUpComponent implements OnInit {
     primerApellido: "", // Nuevo campo: primer apellido
     segundoApellido: "",
     email:"", // Nuevo campo: segundo apellido
-    fechaNacimiento: "02/03/2000", // Nuevo campo: fecha de nacimiento
+    fechaNacimiento: "", // Nuevo campo: fecha de nacimiento
     direccion: "", // Nuevo campo: dirección
     telefono: "", // Nuevo campo: teléfono
     rol: "", // Nuevo campo: rol
     cedula: "", // Nuevo campo: cédula
     pass: "",
+    notas:""
   }
 
   userForm!: FormGroup;
@@ -38,7 +39,8 @@ export class SignUpComponent implements OnInit {
       telefono: this.usuario.telefono, // Nuevo campo: teléfono
       rol: this.usuario.rol, // Nuevo campo: rol
       cedula: this.usuario.cedula, // Nuevo campo: cédula
-      pass: this.usuario.pass
+      pass: this.usuario.pass,
+      notas: this.usuario.notas
     })
   }
 
@@ -47,11 +49,11 @@ export class SignUpComponent implements OnInit {
       return;
     }
     const formValue = this.userForm.value;
-    console.log(formValue);
     this.authSvc.signup(formValue).subscribe(res => {
       if (res) {
-        console.log(res);
+        location.replace('/home')
       }
     })
+    
   }
 }

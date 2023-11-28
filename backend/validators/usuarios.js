@@ -60,10 +60,6 @@ const validatorGetRolUser = [
     .notEmpty(),
 
 
-    check("limit")
-    .exists()
-    .notEmpty(),
-
     (req, res, next) => {
         return validateResults(req, res, next); 
     }
