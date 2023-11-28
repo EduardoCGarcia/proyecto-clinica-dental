@@ -36,6 +36,33 @@ const validatorCreateFactura = [
         .isBoolean()
         .withMessage('El estado debe ser un valor booleano'),
 
+    //Aquí inicia la parte para el  tratamientoFactura
+
+    check('total_tratamiento')
+        .exists()
+        .notEmpty()
+        .isDecimal()
+        .withMessage('El costo del tratamiento debe ser un número decimal'),
+
+    check('id_tratamiento')
+        .exists()
+        .notEmpty()
+        .isNumeric()
+        .withMessage('El tratamiento debe es el numero que lo identifica'),
+
+    //Aquí inicia la parte para el pago
+
+    check('monto')
+    .exists()
+    .notEmpty()
+    .isDecimal()
+    .withMessage('El monto del pago debe ser un número decimal'),
+
+    check('observaciones')
+    .optional(),
+
+
+
     (req, res, next) => {
         return validateResults(req, res, next);
     }
