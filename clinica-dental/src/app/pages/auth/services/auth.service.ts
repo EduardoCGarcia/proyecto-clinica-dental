@@ -76,7 +76,6 @@ export class AuthService {
       .post<Usuario>(`${this.AUTH_SERVER}/signup`, authData)
       .pipe(
         map((user: Usuario) => {
-          this.user.next(user);
           return user;
         }),
         catchError((error) => this.handleError(error))
