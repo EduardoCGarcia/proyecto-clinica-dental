@@ -15,6 +15,8 @@ import { GalleriaModule } from "primeng/galleria";
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
 import { SplitterModule } from 'primeng/splitter';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { CalendarModule } from 'primeng/calendar';
 @NgModule({
   declarations: [],
   imports: [
@@ -35,7 +37,9 @@ import { SplitterModule } from 'primeng/splitter';
     GalleriaModule,
     AvatarModule,
     AvatarGroupModule,
-    SplitterModule
+    SplitterModule,
+    InputTextareaModule,
+    CalendarModule
   ]
 })
 export class PrimeNgModule { }
