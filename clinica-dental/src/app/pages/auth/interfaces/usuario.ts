@@ -51,4 +51,5 @@ export interface UsuarioSignUp {
     rol: string;
     cedula: string;
     pass: string;
+    notas:string;
 }
