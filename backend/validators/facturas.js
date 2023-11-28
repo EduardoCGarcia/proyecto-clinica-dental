@@ -36,6 +36,13 @@ const validatorCreateFactura = [
         .isBoolean()
         .withMessage('El estado debe ser un valor booleano'),
 
+    check('id_paciente')
+        .isInt()
+        .withMessage('El ID del dentista debe ser un número entero')
+        .not()
+        .isEmpty()
+        .withMessage('El ID del dentista es requerido'),
+
     //Aquí inicia la parte para el  tratamientoFactura
 
     check('total_tratamiento')
@@ -60,6 +67,12 @@ const validatorCreateFactura = [
 
     check('observaciones')
     .optional(),
+
+    check('nota')
+        .exists()
+        .notEmpty()
+        .isLength({ max: 255 })
+        .withMessage('La nota no puede exceder los 255 caracteres'),
 
 
 
