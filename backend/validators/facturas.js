@@ -28,11 +28,11 @@ const validatorCreateFactura = [
         .withMessage('El estado debe ser un valor booleano'),
 
     check('id_dentista')
-        .isInt()
-        .withMessage('El ID del dentista debe ser un número entero')
         .not()
         .isEmpty()
-        .withMessage('El ID del dentista es requerido'),
+        .withMessage('El ID del dentista es requerido')
+        .isInt()
+        .withMessage('El ID del dentista debe ser un número entero'),
 
     //Aquí inicia la parte para el  tratamientoFactura
 
