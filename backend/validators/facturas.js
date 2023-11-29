@@ -10,17 +10,8 @@ const validatorCreateFactura = [
         .withMessage('El ID del paciente es requerido'),
 
     check('fecha_emision')
-        .custom(value => {
-            if (isNaN(new Date(value).getTime())) {
-                throw new Error();
-            }
-            return true;
-        })
-        .withMessage('La fecha de emisión debe ser válida')
-        .not()
-        .isEmpty()
-        .withMessage('La fecha de emisión es requerida'),
-
+    .exists()
+    .notEmpty(),
     check('monto_total')
         .optional()
         .isDecimal()
@@ -36,7 +27,7 @@ const validatorCreateFactura = [
         .isBoolean()
         .withMessage('El estado debe ser un valor booleano'),
 
-    check('id_paciente')
+    check('id_dentista')
         .isInt()
         .withMessage('El ID del dentista debe ser un número entero')
         .not()

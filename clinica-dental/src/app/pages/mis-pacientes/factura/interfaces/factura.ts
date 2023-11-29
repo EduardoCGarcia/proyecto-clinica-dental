@@ -7,6 +7,20 @@ export interface Factura {
     saldo_deudor: number;
     estado: boolean;
     id_dentista: number;
-    Dentista: Dentista,
-    Paciente: Paciente
+    id_tratamiento:number;
+    observaciones:string;
+    monto_pago:number;
+    nota:string;
+    Dentista: Dentista;
+    Paciente: Paciente;
+}
+
+export interface FacturaCreate {
+    id: number;
+    id_paciente: number;
+    fecha_emision: Date;
+    monto_total: number;
+    saldo_deudor: number;
+    estado: boolean;
+    id_dentista: number;
 }

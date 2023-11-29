@@ -22,6 +22,7 @@ export interface Paciente{
     telefono: string;
     email: string;
     notas: string;
+    imagen: string;
 }
 
 export interface Dentista{

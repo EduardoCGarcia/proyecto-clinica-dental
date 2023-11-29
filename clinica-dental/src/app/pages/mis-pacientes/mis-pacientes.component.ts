@@ -18,11 +18,14 @@ export class MisPacientesComponent implements OnInit {
           {
             label: 'Nuevo',
             icon: 'pi pi-fw pi-plus',
+            routerLink: ['/mis-pacientes/facturas/nueva'], // Cambia a la ruta deseada
+            routerLinkActiveOptions: { exact: false },
           },
           {
             label: 'Listar facturas',
             icon: 'pi pi-fw pi-list',
-            routerLink:"verfacturas"
+            routerLink: ['/mis-pacientes/facturas/ver'], // Cambia a la ruta deseada
+            routerLinkActiveOptions: { exact: true },
           },
         ]
       },

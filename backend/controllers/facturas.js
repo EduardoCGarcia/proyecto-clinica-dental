@@ -9,6 +9,7 @@ const createFactura = async (req, res) => {
     //TODO Validar que los id existan
     try {
         req = matchedData(req);
+        console.log(req);
         const { id_tratamiento, total_tratamiento, monto, observaciones, nota, ...fac } = req;
         factura = { ...fac, monto_total: total_tratamiento, saldo_deudor: total_tratamiento };
         
@@ -107,8 +108,6 @@ const getFacturas = async (req, res) => {
 const getFilterFacturas = async (req, res) => {
     try {
         const {rol,id} = matchedData(req)
-        console.log(rol);
-        console.log(id);
 
 
         let dataFilFacturas
@@ -119,7 +118,7 @@ const getFilterFacturas = async (req, res) => {
                     {
                         model: Usuario,
                         as: 'Paciente', // Alias para el usuario asociado como paciente
-                        attributes: ['id','nombre', 'primerApellido', 'segundoApellido','email'],
+                        attributes: ['id','nombre', 'primerApellido', 'segundoApellido','email','telefono', 'direccion','imagen'],
                         where: {
                             id:id
                         }
@@ -128,7 +127,7 @@ const getFilterFacturas = async (req, res) => {
                     {
                         model: Usuario,
                         as: 'Dentista', // Alias para el usuario asociado como dentista
-                        attributes: ['id','nombre', 'primerApellido', 'segundoApellido','email'],
+                        attributes: ['id','nombre', 'primerApellido', 'segundoApellido','email','telefono', 'direccion','imagen'],
                     },
                 ],
             });
@@ -140,7 +139,7 @@ const getFilterFacturas = async (req, res) => {
                     {
                         model: Usuario,
                         as: 'Dentista', // Alias para el usuario asociado como paciente
-                        attributes: ['id','nombre', 'primerApellido', 'segundoApellido','email'],
+                        attributes: ['id','nombre', 'primerApellido', 'segundoApellido','email','telefono', 'direccion','imagen'],
                         where: {
                             id:id
                         }
@@ -148,14 +147,12 @@ const getFilterFacturas = async (req, res) => {
                     {
                         model: Usuario,
                         as: 'Paciente', // Alias para el usuario asociado como dentista
-                        attributes: ['id','nombre', 'primerApellido', 'segundoApellido','email'],
+                        attributes: ['id','nombre', 'primerApellido', 'segundoApellido','email','telefono', 'direccion','imagen'],
                     },
                 ],
             });
         }
-        console.log(dataFilFacturas);
-    
-        return res.status(200).json(dataFilFacturas);
+        return res.status(200).send(dataFilFacturas);
       } catch (error) {
         console.error(error);
         return res.status(500).send("Error interno del servidor: " + error);
