@@ -11,7 +11,7 @@ export class HistorialClinicoService {
 
   constructor(private http: HttpClient) {}
 
-  getHistorialesByPaciente(idPaciente: number): Observable<HistorialClinico[]> {
+  getHistorialesByPaciente(idPaciente: number | undefined): Observable<HistorialClinico[]> {
     const url = `${this.apiUrl}/${idPaciente}`;
     return this.http.get<HistorialClinico[]>(url);
   }

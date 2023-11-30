@@ -15,6 +15,7 @@ import { CalendarioModule } from './pages/calendario/calendario.module';
 import { HistorialClinicoModule } from './pages/mis-pacientes/historial-clinico/historial-clinico.module';
 import { VistaAdminModule } from './pages/vista-admin/vista-admin.module';
 import { VistaPacientesModule } from './pages/vista-pacientes/vista-pacientes.module';
+import { CalendarioComponent } from './pages/calendario/calendario.component';
 
 
 @NgModule({

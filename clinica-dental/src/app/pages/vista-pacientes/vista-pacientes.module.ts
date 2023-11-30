@@ -8,6 +8,7 @@ import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HistorialClinicoComponent } from './historial-clinico/historial-clinico.component';
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
+import { CalendarioComponent } from '../calendario/calendario.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
     VistaPacientesRoutingModule,
     SharedModule,
     PrimeNgModule
+
   ]
 })
 export class VistaPacientesModule { }

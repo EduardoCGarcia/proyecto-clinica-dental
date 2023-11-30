@@ -16,15 +16,9 @@ export class VistaPacientesComponent implements OnInit {
         icon: 'pi pi-book',
         items: [
           {
-            label: 'Nueva Cita',
-            icon: 'pi pi-save',
-            routerLink: ['/pacientesView/citas/nueva'], // Cambia a la ruta deseada
-            routerLinkActiveOptions: { exact: false },
-          },
-          {
             label: 'Calendario',
             icon: 'pi pi-calendar-plus',
-            routerLink: ['/pacientesView/citas/ca endario'], // Cambia a la ruta deseada
+            routerLink: ['/pacientesView/citas/calendario'], // Cambia a la ruta deseada
             routerLinkActiveOptions: { exact: true },
           },
         ]

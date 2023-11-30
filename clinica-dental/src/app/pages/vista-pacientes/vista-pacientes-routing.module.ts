@@ -10,7 +10,6 @@ const routes: Routes = [
   {
     path: '', component: VistaPacientesComponent,
     children: [
-      { path: 'citas/nueva', component: NuevaCitaComponent },
       { path: 'citas/calendario', component: CalendarioComponent },
     ]
   },
