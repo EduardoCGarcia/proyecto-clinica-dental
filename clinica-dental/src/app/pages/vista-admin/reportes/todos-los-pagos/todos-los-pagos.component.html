@@ -13,6 +13,7 @@
                 <tr class="text-3xl">
                     <th>Paciente</th>
                     <th>Folio factura</th>
+                    <th>Fecha del pago</th>
                     <th>Monto total</th>
                     <th>Saldo deudor</th>
                     <th>Monto del Pago</th>
@@ -24,6 +25,7 @@
                         {{pago.Factura.Paciente.nombre}} {{pago.Factura.Paciente.primerApellido}}
                         {{pago.Factura.Paciente.segudoApellido}}
                     </td>
+                    <td class="text-xl">{{ pago.id }} </td>
                     <td class="text-xl">{{ pago.fecha }} </td>
                     <td>{{ pago.Factura.monto_total }}</td>
                     <td>{{ pago.Factura.saldo_deudor }}</td>

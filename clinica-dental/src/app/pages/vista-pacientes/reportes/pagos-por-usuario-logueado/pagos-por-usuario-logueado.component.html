@@ -1,1 +1,43 @@
-<p>pagos-por-usuario-logueado works!</p>
+<div class="container">
+    <div class="form_container pl-5 pr-5 pt-2 m-5 border-round-lg">
+
+
+
+        <p-table [value]="pagos" [tableStyle]="{'min-width': '60rem'}">
+            <ng-template pTemplate="caption">
+                <div class="flex align-items-center justify-content-between text-6xl">
+                    Reporte de todos sus pagos Sr. {{this.user?.user?.nombre}} {{this.user?.user?.primerApellido}} {{this.user?.user?.segundoApellido}}
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr class="text-3xl">
+                    <th>Paciente</th>
+                    <th>Folio factura</th>
+                    <th>Fecha del pago</th>
+                    <th>Monto total</th>
+                    <th>Saldo deudor</th>
+                    <th>Monto del Pago</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-pago>
+                <tr class="text-2xl">
+                    <td class="flex align-items-center justify-content-around">
+                        {{pago.Factura.Paciente.nombre}} {{pago.Factura.Paciente.primerApellido}}
+                        {{pago.Factura.Paciente.segudoApellido}}
+                    </td>
+                    <td class="text-xl">{{ pago.Factura.id }} </td>
+                    <td class="text-xl">{{ pago.fecha }} </td>
+                    <td>{{ pago.Factura.monto_total }}</td>
+                    <td>{{ pago.Factura.saldo_deudor }}</td>
+                    <td>{{ pago.monto | titlecase }}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="flex align-items-center justify-content-between">
+                    En toatl hay {{pagos ? pagos.length : 0 }} pagos.
+                </div>
+            </ng-template>
+        </p-table>
+
+    </div>
+</div>

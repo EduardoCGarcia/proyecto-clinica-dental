@@ -5,6 +5,7 @@ import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
 import { TratamientoComponent } from '../tratamiento/tratamiento.component';
 import { HistorialClinicoComponent } from './historial-clinico/historial-clinico.component';
 import { CalendarioComponent } from '../calendario/calendario.component';
+import { PagosPorUsuarioLogueadoComponent } from './reportes/pagos-por-usuario-logueado/pagos-por-usuario-logueado.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,12 @@ const routes: Routes = [
     path: '', component: VistaPacientesComponent,
     children: [
       { path: 'historialClinico', component: HistorialClinicoComponent },
+    ]
+  },
+  {
+    path: '', component: VistaPacientesComponent,
+    children: [
+      { path: 'pagosrealizados', component: PagosPorUsuarioLogueadoComponent },
     ]
   },
 

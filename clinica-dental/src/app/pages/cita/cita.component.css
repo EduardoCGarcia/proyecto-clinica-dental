@@ -4,9 +4,17 @@
 }
 
 .form_container{
-    background-color: aqua;
-    width: 100%;
+    background-color: rgba(240, 248, 255, 0.666);
+    width: 90%;
 }
+
+.p-fullcalendar {
+    /* Agrega estilos según tus preferencias */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
 
 .head_form{
     display: flex;
@@ -14,3 +22,10 @@
     justify-content: center;
     text-transform: uppercase;
 }
+
+
+.select-box {
+    max-height: 200px; /* Ajusta según tus necesidades */
+    overflow-y: auto;
+  }
+  

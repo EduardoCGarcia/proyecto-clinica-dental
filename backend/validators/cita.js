@@ -52,6 +52,18 @@ const validatorCreateAppoinment = [
         return validateResults(req, res, next);
     }
 ]
+const validatorGetFecha = [
+    check('fecha')
+        .exists()
+        .notEmpty(),
+    check('id_dentista')
+        .optional()
+        .isInt()
+        .withMessage('El ID del dentista debe ser un número entero'),
+    (req, res, next) => {
+        return validateResults(req, res, next);
+    }
+]
 
 const validatorFecha = [
     check('fecha')
@@ -122,4 +134,4 @@ const validatorRolAppoinment = [
 ]
 
 
-module.exports = { validatorCreateAppoinment, validatorUpdateAppoinment, validatorRolAppoinment }
+module.exports = { validatorCreateAppoinment, validatorUpdateAppoinment, validatorRolAppoinment,validatorGetFecha  }

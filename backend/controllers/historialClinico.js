@@ -26,8 +26,8 @@ const getHistoriales = async (req, res) => {
             include: [
                 {
                     model: Usuario,
-                    as: 'paciente',
-                    attributes: ['id_paciente','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                    as: 'Paciente',
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
                 },
                 {
                     model: Tratamiento,

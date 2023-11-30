@@ -30,6 +30,12 @@ export class VistaPacientesComponent implements OnInit {
         routerLinkActiveOptions: { exact: false },
       },
       {
+        label: 'Pagos realizados',
+        icon: 'pi pi-bookmark-fill',
+        routerLink: ['/pacientesView/pagosrealizados'], // Cambia a la ruta deseada
+        routerLinkActiveOptions: { exact: false },
+      },
+      {
         label: 'Historial clínico',
         icon: 'pi pi-database',
         routerLink: ['/pacientesView/historialClinico'], // Cambia a la ruta deseada

@@ -30,7 +30,7 @@ const HistorialClinico = sequelize.define(
 );
 
 // Define las asociaciones con los modelos de Paciente y Tratamiento
-HistorialClinico.belongsTo(Usuario, { foreignKey: "id_paciente", as: "paciente" });
+HistorialClinico.belongsTo(Usuario, { foreignKey: "id_paciente", as: "Paciente" });
 HistorialClinico.belongsTo(Tratamiento, { foreignKey: "id_tratamiento", as: "tratamiento" });
 
 

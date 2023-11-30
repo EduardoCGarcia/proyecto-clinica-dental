@@ -27,7 +27,7 @@ export class PagoService {
     return this.http.get<Pago[]>(`${this.apiUrl}/byFactura/${idFactura}`);
   }
   
-  getPagosByPaciente(idPaciente: number): Observable<Pago[]> {
-    return this.http.get<Pago[]>(`${this.apiUrl}/byPaciente/${idPaciente}`);
+  getPagosByPaciente(idPaciente: number | undefined): Observable<PagoFactura[]> {
+    return this.http.get<PagoFactura[]>(`${this.apiUrl}/byPaciente/${idPaciente}`);
   }
 }

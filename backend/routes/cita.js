@@ -9,16 +9,35 @@ const {
     deleteAppointment,
     getAppointmentsByDentista,
     getAppointmentsByPaciente,
+    getApoinmentsFecha,
     getAppointmentsByMotivo
 } = require('../controllers/cita');
 
 const {
     validatorCreateAppoinment,
     validatorUpdateAppoinment,
+    validatorGetFecha,
     validatorRolAppoinment
 } = require('../validators/cita');
 
 const { validatorIdParam } = require("../validators/idParam");
+
+
+
+router.get(
+    "/byDentista/:id",
+    validatorIdParam,
+    getAppointmentsByDentista);
+
+router.get(
+    "/byPaciente/:id",
+    validatorIdParam,
+    getAppointmentsByPaciente);
+
+router.get(
+    "/fecha",
+    validatorGetFecha,
+    getApoinmentsFecha);
 
 
 router.post(

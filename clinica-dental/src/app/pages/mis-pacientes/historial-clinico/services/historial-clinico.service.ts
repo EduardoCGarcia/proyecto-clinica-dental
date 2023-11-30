@@ -16,4 +16,9 @@ export class HistorialClinicoService {
     return this.http.get<HistorialClinico[]>(url);
   }
 
+  getHistoriales(): Observable<HistorialClinico[]> {
+    const url = `${this.apiUrl}`;
+    return this.http.get<HistorialClinico[]>(url);
+  }
+
 }

@@ -8,7 +8,8 @@ import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HistorialClinicoComponent } from './historial-clinico/historial-clinico.component';
 import { NuevaCitaComponent } from './nueva-cita/nueva-cita.component';
-import { CalendarioComponent } from '../calendario/calendario.component';
+
+import { ReportesModule } from './reportes/reportes.module';
 
 
 @NgModule({
@@ -21,8 +22,8 @@ import { CalendarioComponent } from '../calendario/calendario.component';
     CommonModule,
     VistaPacientesRoutingModule,
     SharedModule,
-    PrimeNgModule
-
+    PrimeNgModule,
+    ReportesModule
   ]
 })
 export class VistaPacientesModule { }
