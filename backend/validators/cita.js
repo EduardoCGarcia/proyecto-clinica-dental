@@ -109,4 +109,17 @@ const validatorUpdateAppoinment = [
     }
 ]
 
-module.exports = { validatorCreateAppoinment, validatorUpdateAppoinment, validatorFecha }
+const validatorRolAppoinment = [
+
+    check('rol_consulta')
+        .exists()
+        .isIn(['cita', 'urgencia'])
+        .withMessage('El rol de la consulta debe ser "cita" o "urgencia"'),
+
+    (req, res, next) => {
+        return validateResults(req, res, next);
+    }
+]
+
+
+module.exports = { validatorCreateAppoinment, validatorUpdateAppoinment, validatorRolAppoinment }

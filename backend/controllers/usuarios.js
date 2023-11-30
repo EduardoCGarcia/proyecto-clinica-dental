@@ -73,6 +73,7 @@ const createUsuario = async (req, res) => {
 
 const getUsuario = async (req, res) => {
   try {
+    
     const dataUser = await Usuario.findAll({
       attributes: [
         'id',
