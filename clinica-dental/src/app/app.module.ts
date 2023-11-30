@@ -11,8 +11,11 @@ import { AuthModule } from './pages/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CitaModule } from './pages/cita/cita.module';
 import { TratamientoModule } from './pages/tratamiento/tratamiento.module';
-import { HistorialClinicoModule } from './pages/historial-clinico/historial-clinico.module';
 import { CalendarioModule } from './pages/calendario/calendario.module';
+import { HistorialClinicoModule } from './pages/mis-pacientes/historial-clinico/historial-clinico.module';
+import { VistaAdminModule } from './pages/vista-admin/vista-admin.module';
+import { VistaPacientesModule } from './pages/vista-pacientes/vista-pacientes.module';
+
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import { CalendarioModule } from './pages/calendario/calendario.module';
     TratamientoModule,
     HistorialClinicoModule,
     CalendarioModule,
+    VistaAdminModule,
+    VistaPacientesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -21,17 +21,17 @@ const createAppointment = async (req, res) => {
 const getAppointments = async (req, res) => {
     try {
         const dataAppointments = await citasModel.findAll({
-            attributes:['id','rol_consulta','fecha','hora'],
+            attributes:['id','rol_consulta','fecha','hora', 'motivo','rol_consulta'],
             include: [
                 {
                     model: Usuario,
                     as: 'Paciente', // Alias para el usuario asociado como paciente
-                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas','imagen'],
                 },
                 {
                     model: Usuario,
                     as: 'Dentista', // Alias para el usuario asociado como dentista
-                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas','imagen'],
                 },
             ],
         });
@@ -120,6 +120,37 @@ const getAppointmentsByPaciente = async (req, res) => {
     }
 }
 
+const getAppointmentsByMotivo = async (req, res) => {
+    try {
+        const { rol_consulta } = matchedData(req);
+        console.log('Rol de Consulta: '+rol_consulta);
+
+        const dataAppointments = await citasModel.findAll({
+            attributes:['id','rol_consulta','fecha','hora','motivo'],
+            where: {
+                rol_consulta:rol_consulta
+            },
+            include: [
+                {
+                    model: Usuario,
+                    as: 'Paciente', // Alias para el usuario asociado como paciente
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas','imagen'],
+                },
+                {
+                    model: Usuario,
+                    as: 'Dentista', // Alias para el usuario asociado como dentista
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas','imagen'],
+                },
+            ],
+        });
+        return res.status(200).send(dataAppointments);
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor: " + error);
+    }
+}
+
 const getAppointment = async (req, res) => {
     try {
 
@@ -181,6 +212,7 @@ module.exports = {
     getAppointments,
     getAppointmentsByDentista,
     getAppointmentsByPaciente,
+    getAppointmentsByMotivo,
     putAppointment,
     deleteAppointment,
     getApoinmentsFecha

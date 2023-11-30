@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="form_container pl-5 pr-5 pt-2 m-5 border-round-lg">
+      <h2>Lista de Historial Clinico</h2>
+      <form [formGroup]="historialClinicoForm">
+        <div class="formgrid grid m-2">
+          <div class="field col-12 sm:col-12 md:col-7 lg:col-4">
+              <label for="patient">Paciente</label>
+              <select formControlName="selectedPatient" id="patient"
+                  class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary"
+                  style="appearance: auto" 
+                  (change)="onPatientSelectionChange()">
+                  <option *ngFor="let patient of getUniquePatients()" [value]="patient.id">
+                      {{ patient.nombre }} {{ patient.primerApellido }} {{ patient.segundoApellido }}
+                  </option>
+              </select>
+          </div>
+        </div>
+      </form>
+      <app-table [filas]="historial" [columnas]="cols"></app-table>
+    </div>
+  </div>  

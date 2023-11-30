@@ -1,0 +1,40 @@
+<p>por-motivo works!</p>
+<div class="container">
+    <div class="form_container pl-5 pr-5 pt-2 m-5 border-round-lg">
+      
+
+
+<p-table [value]="citas" [tableStyle]="{'min-width': '60rem'}">
+    <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between text-6xl">
+            Reporte De Citas De Urgencia
+        </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr class="text-3xl">
+            <th>Nombre del paciente</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Motivo</th>
+            <th>Tipo de consulta</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-cita>
+        <tr class="text-2xl">
+            <td class="flex align-items-center justify-content-around" > <img [src]="cita.Paciente.imagen" alt="" class="w-1 border-circle"> {{cita.Paciente.nombre}} {{cita.Paciente.primerApellido}}
+                {{cita.Paciente.segundoApellido}} </td>
+            <td class="text-xl">{{ cita.fecha }} </td>
+            <td>{{ cita.hora }}</td>
+            <td>{{ cita.motivo | titlecase }}</td>
+            <td>{{ cita.rol_consulta | titlecase }}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="flex align-items-center justify-content-between">
+            En toatl hay {{citas ? citas.length : 0 }} citas.
+        </div>
+    </ng-template>
+</p-table>
+
+    </div>
+  </div> 

@@ -9,7 +9,7 @@ import { Cita } from '../interfaces/cita';
 export class CitaService {
   private apiUrl = 'http://localhost:3000/api/cita'; // Ajusta la URL según tus rutas
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getCita(id: number): Observable<Cita> {
     return this.http.get<Cita>(`${this.apiUrl}/${id}`);
@@ -31,6 +31,10 @@ export class CitaService {
 
   getAppointmentsByDentista(id: number): Observable<Cita[]> {
     return this.http.get<Cita[]>(`${this.apiUrl}/byDentista/${id}`);
+  }
+
+  getAppointmentsByRol(rol_consulta: string): Observable<Cita[]> {
+    return this.http.get<Cita[]>(`${this.apiUrl}/byRolConsulta/${rol_consulta}`);
   }
 
   getAppointmentsByPaciente(id: number): Observable<Cita[]> {

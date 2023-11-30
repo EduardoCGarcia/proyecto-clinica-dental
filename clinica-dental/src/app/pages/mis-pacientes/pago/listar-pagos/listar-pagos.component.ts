@@ -3,8 +3,6 @@ import { PagoService } from '../services/pago.service';
 import { AuthService } from 'src/app/pages/auth/services/auth.service';
 import { Pago } from '../interfaces/pago';
 import { Usuario } from 'src/app/pages/auth/interfaces/usuario';
-import { Factura } from '../../factura/interfaces/factura';
-import { FacturaService } from '../../factura/services/factura.service';
 
 @Component({
   selector: 'app-listar-pagos',

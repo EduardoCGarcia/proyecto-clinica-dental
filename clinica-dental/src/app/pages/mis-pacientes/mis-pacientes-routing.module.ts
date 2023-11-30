@@ -5,6 +5,7 @@ import { FacturaComponent } from './factura/factura.component';
 import { NuevaFacturaComponent } from './factura/nueva-factura/nueva-factura.component';
 import { CrearPagoComponent } from './pago/crear-pago/crear-pago.component';
 import { ListarPagosComponent } from './pago/listar-pagos/listar-pagos.component';
+import { PorPacientesComponent } from './historial-clinico/por-pacientes/por-pacientes.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,11 @@ const routes: Routes = [
     path: 'pago', component: MisPacientesComponent, children: [
       { path: 'crear', component: CrearPagoComponent },
       { path: 'listar', component: ListarPagosComponent }
+    ]
+  },
+  {
+    path: 'historial', component: MisPacientesComponent, children: [
+      { path: 'porPaciente', component: PorPacientesComponent },
     ]
   },
   { path: '', component: MisPacientesComponent },

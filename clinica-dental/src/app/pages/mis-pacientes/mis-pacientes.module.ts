@@ -6,6 +6,7 @@ import { MisPacientesComponent } from './mis-pacientes.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FacturaModule } from './factura/factura.module';
 import { PagoModule } from './pago/pago.module';
+import { HistorialClinicoModule } from './historial-clinico/historial-clinico.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { PagoModule } from './pago/pago.module';
     MisPacientesRoutingModule,
     SharedModule,
     FacturaModule,
-    PagoModule
+    PagoModule,
+    HistorialClinicoModule
   ]
 })
 export class MisPacientesModule { }

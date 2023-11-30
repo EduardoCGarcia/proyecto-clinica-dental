@@ -1,8 +1,8 @@
-<p-menubar [model]="items" styleClass="" routerLinkActiveOptions="{exact: true}">
+<p-menubar [model]="items" styleClass="text-2xl" routerLinkActiveOptions="{exact: true}">
     <ng-template pTemplate="start" class="flex">
-        <img src="./assets/diente.png" height="40" class="mr-2" />
+        <img src="./assets/diente.png" height="60" class="mr-2" />
     </ng-template>
     <ng-template pTemplate="end">
-        <span><a routerLink="/home" id="name_web">AgendaSonrisas</a></span>
+        <span><a routerLink="/home" id="name_web">{{rol | titlecase}}</a></span>
     </ng-template>
 </p-menubar>
