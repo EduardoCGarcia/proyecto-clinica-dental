@@ -11,7 +11,7 @@ export class AuthService {
 
   private user = new BehaviorSubject<Usuario | null>(null);
 
-  AUTH_SERVER: string = 'http://localhost:3000/api/auth';
+  AUTH_SERVER: string = 'http://18.224.39.140:3000/api/auth';
 
   private loggedIn = new BehaviorSubject<boolean>(false);
   private isAdmin = new BehaviorSubject<boolean>(false);
