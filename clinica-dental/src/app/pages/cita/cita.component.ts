@@ -145,6 +145,8 @@ export class CitaComponent implements OnInit {
     this.citaSvc.createCita(data).subscribe(res => {
       if (res) {
         console.log(res);
+        this.citaForm.reset()
+        this.ngOnInit()
       }
     })
   }
