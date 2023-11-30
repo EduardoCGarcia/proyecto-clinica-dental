@@ -37,6 +37,10 @@ export class TratamientoComponent implements OnInit {
 
   getTratamientos(): void {
     this.tratamientoService.getTratamientos()
-      .subscribe(tratamientos => this.tratamientos = tratamientos);
+      .subscribe(tratamientos => {
+        this.tratamientos = tratamientos
+        console.log(tratamientos);
+        
+      });
   }
 }

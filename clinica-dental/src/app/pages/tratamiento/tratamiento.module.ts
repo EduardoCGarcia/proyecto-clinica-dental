@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TratamientoComponent } from './tratamiento.component';
 import { CarouselComponent } from './views/carousel/carousel.component';
 import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
   ],
   imports: [
     CommonModule,
-    PrimeNgModule
+    PrimeNgModule,
+    FormsModule
   ],
   exports:[
     CarouselComponent
