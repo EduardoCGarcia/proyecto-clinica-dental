@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Pago } from '../interfaces/pago';
+import { Pago, PagoFactura } from '../interfaces/pago';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,8 @@ export class PagoService {
     return this.http.post<Pago>(this.apiUrl, pago);
   }
 
-  getPago(id: number): Observable<Pago> {
-    return this.http.get<Pago>(`${this.apiUrl}/byUser/${id}`);
+  getPago(id: number | undefined): Observable<PagoFactura[]> {
+    return this.http.get<PagoFactura[]>(`${this.apiUrl}/byUser/${id}`);
   }
 
   getPagosByFactura(idFactura: number): Observable<Pago[]> {
