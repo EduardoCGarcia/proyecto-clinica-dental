@@ -7,7 +7,7 @@ import { Pago, PagoFactura } from '../interfaces/pago';
   providedIn: 'root'
 })
 export class PagoService {
-  private apiUrl = 'http://18.224.39.140:3000/api/pago';  // Cambia esto según tu configuración de backend
+  private apiUrl = 'http://localhost:3000/api/pago';  // Cambia esto según tu configuración de backend
 
   constructor(private http: HttpClient) { }
 

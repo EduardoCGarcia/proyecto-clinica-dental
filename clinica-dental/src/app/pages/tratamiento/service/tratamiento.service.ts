@@ -8,7 +8,7 @@ import { Tratamiento } from '../interfaces/tratamiento';
 })
 export class TratamientoService {
 
-  private apiUrl = 'http://18.224.39.140:3000/api/tratamientos';  // Cambia esto según tu configuración de backend
+  private apiUrl = 'http://localhost:3000/api/tratamientos';  // Cambia esto según tu configuración de backend
 
   constructor(private http: HttpClient) { }
 

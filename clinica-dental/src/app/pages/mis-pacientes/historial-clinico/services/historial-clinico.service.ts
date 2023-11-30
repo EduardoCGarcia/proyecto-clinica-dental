@@ -7,7 +7,7 @@ import { HistorialClinico } from '../interfaces/historial-clinico';
   providedIn: 'root'
 })
 export class HistorialClinicoService {
-  private apiUrl = 'http://18.224.39.140:3000/api/historialClinico'; // Reemplaza con la URL de tu API
+  private apiUrl = 'http://localhost:3000/api/historialClinico'; // Reemplaza con la URL de tu API
 
   constructor(private http: HttpClient) {}
 
