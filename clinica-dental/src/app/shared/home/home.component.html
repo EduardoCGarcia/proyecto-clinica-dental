@@ -1,0 +1,16 @@
+<div class="home__container">
+    <div id="saludo">
+        <h1>AGENDA SONRISAS</h1>
+        <P>Gracias por visitar nuestra clínica dental. Estamos comprometidos con proporcionar atención dental de calidad y mejorar su salud bucal.</P>
+    </div>
+    <p-galleria #galleria [value]="images" [(activeIndex)]="activeIndex" [numVisible]="5" [showThumbnails]="false" [showItemNavigators]="true" [showItemNavigatorsOnHover]="true" [circular]="true" [autoPlay]="true" [transitionInterval]="3000" [containerStyle]="{'width':'100%'}" [containerClass]="galleriaClass()"> 
+        <ng-template pTemplate="item" let-item>
+            <img [src]="item.itemImageSrc" style="width: 30vw; display: block;" />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+            <div class="grid grid-nogutter justify-content-center">
+                <img [src]="item.thumbnailImageSrc" style="display: block;" />
+            </div>
+        </ng-template>
+    </p-galleria>
+</div>

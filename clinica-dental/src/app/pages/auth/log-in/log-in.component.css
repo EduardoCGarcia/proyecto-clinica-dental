@@ -1,0 +1,10 @@
+.containter{
+    display: grid;
+    place-items: center;
+    width: 90%;
+}
+
+.content{
+    display: flex;
+    justify-content: center;
+}

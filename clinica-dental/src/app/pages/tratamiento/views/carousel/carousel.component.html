@@ -1,0 +1,17 @@
+<p-carousel [value]="items" [numVisible]="numVisible" [numScroll]="numScroll" [circular]="circular"
+    [responsiveOptions]="responsiveOptions" [autoplayInterval]="autoplayInterval">
+    <ng-template let-tratamiento pTemplate="item">
+        <div class="border-1 surface-border border-round m-2 text-center py-5 px-3 bg-white-alpha-60">
+            <div class="mb-3">
+                <img [src]="tratamiento.imagen" [alt]="tratamiento.nombre" class="w-6 shadow-2 border-round-md" />
+            </div>
+            <div style="max-height: 150px; overflow: hidden;">
+                <h4 class="mb-1 text-2xl">{{ tratamiento.nombre }}</h4>
+                <div class="car-buttons mt-5">
+                    <!-- <p-button type="button" styleClass="p-button-success p-button-rounded mr-2"
+                        icon="pi pi-star-fill"></p-button> -->
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>
