@@ -1,0 +1,60 @@
+.home__container{
+    background-color: rgb(255, 255, 255, 0.492);
+    padding: 10px;
+    margin: 10px 100px 10px 100px;
+    border-radius: 5px;
+}
+
+.caja{
+    background-color: brown;
+    color: #fff;
+    width: 200px;
+    height: 200px;
+}
+
+#saludo{
+    padding: 20px;
+    margin: 20px 20px 10px 20px;
+}
+
+#saludo h1 {
+    color: rgb(0, 72, 98);
+    font-size: 50px;
+}
+
+#saludo p {
+    color: rgb(0, 113, 38);
+    font-size: 25px;
+    font-weight: 500;
+}
+
+
+
+
+:host {
+    @keyframes slidedown-icon {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(20px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .slidedown-icon {
+        animation: slidedown-icon;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
+
+    .box {
+        background-image: radial-gradient(var(--primary-300), var(--primary-600));
+        border-radius: 50% !important;
+        color: var(--primary-color-text);
+    }
+}

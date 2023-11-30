@@ -1,0 +1,23 @@
+label {
+    background-color: aliceblue;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.form_container {
+    background-color: rgba(255, 255, 255, 0.823);
+    width: 70vw;
+}
+
+.container .form_container h3 {
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.container .form_container label {
+    background-color: rgba(0, 0, 255, 0);
+}

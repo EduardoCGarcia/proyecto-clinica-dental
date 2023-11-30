@@ -10,17 +10,8 @@ const validatorCreateFactura = [
         .withMessage('El ID del paciente es requerido'),
 
     check('fecha_emision')
-        .custom(value => {
-            if (isNaN(new Date(value).getTime())) {
-                throw new Error();
-            }
-            return true;
-        })
-        .withMessage('La fecha de emisión debe ser válida')
-        .not()
-        .isEmpty()
-        .withMessage('La fecha de emisión es requerida'),
-
+    .exists()
+    .notEmpty(),
     check('monto_total')
         .optional()
         .isDecimal()
@@ -35,6 +26,46 @@ const validatorCreateFactura = [
         .optional()
         .isBoolean()
         .withMessage('El estado debe ser un valor booleano'),
+
+    check('id_dentista')
+        .not()
+        .isEmpty()
+        .withMessage('El ID del dentista es requerido')
+        .isInt()
+        .withMessage('El ID del dentista debe ser un número entero'),
+
+    //Aquí inicia la parte para el  tratamientoFactura
+
+    check('total_tratamiento')
+        .exists()
+        .notEmpty()
+        .isDecimal()
+        .withMessage('El costo del tratamiento debe ser un número decimal'),
+
+    check('id_tratamiento')
+        .exists()
+        .notEmpty()
+        .isNumeric()
+        .withMessage('El tratamiento debe es el numero que lo identifica'),
+
+    //Aquí inicia la parte para el pago
+
+    check('monto')
+    .exists()
+    .notEmpty()
+    .isDecimal()
+    .withMessage('El monto del pago debe ser un número decimal'),
+
+    check('observaciones')
+    .optional(),
+
+    check('nota')
+        .exists()
+        .notEmpty()
+        .isLength({ max: 255 })
+        .withMessage('La nota no puede exceder los 255 caracteres'),
+
+
 
     (req, res, next) => {
         return validateResults(req, res, next);

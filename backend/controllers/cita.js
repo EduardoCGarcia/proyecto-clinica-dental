@@ -1,6 +1,7 @@
 const { matchedData } = require("express-validator");
 const models = require("../models");
 const citasModel = models.citasModel;
+const Usuario = models.usersModel;
 
 
 const createAppointment = async (req, res) => {
@@ -19,15 +20,137 @@ const createAppointment = async (req, res) => {
 
 const getAppointments = async (req, res) => {
     try {
-        
-        const dataAppointments =  await citasModel.findAll()
-
-        return res.status(400).send(dataAppointments);
+        const dataAppointments = await citasModel.findAll({
+            attributes:['id','rol_consulta','fecha','hora', 'motivo','rol_consulta'],
+            include: [
+                {
+                    model: Usuario,
+                    as: 'Paciente', // Alias para el usuario asociado como paciente
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas','imagen'],
+                },
+                {
+                    model: Usuario,
+                    as: 'Dentista', // Alias para el usuario asociado como dentista
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas','imagen'],
+                },
+            ],
+        });
+        return res.status(200).send(dataAppointments);
 
     } catch (error) {
-        return res.status(500).send("Error interno del servidor: " + error); // This will send a response to the client indicating that there was an error creating the appointment and will include the
+        console.log(error);
+        return res.status(500).send("Error interno del servidor: " + error);
     }
 }
+
+const getApoinmentsFecha = async (req, res) =>{
+    
+    try {
+        const { Op } = require('sequelize');
+        const { fecha, id_dentista } = matchedData(req);
+        const fechaObj = new Date(fecha);
+        const whereClause = fechaObj.getHours() === 0 && fechaObj.getMinutes() === 0
+            ? { fecha: fechaObj }
+            : { fecha: { [Op.gte]: fechaObj, [Op.lt]: new Date(fechaObj.getTime() + 24 * 60 * 60 * 1000) } };
+
+        const data = await citasModel.findAll({ where: whereClause, id_dentista: id_dentista });
+        res.send(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const getAppointmentsByDentista = async (req, res) => {
+    try {
+        const { id } = matchedData(req);
+
+        const dataAppointments = await citasModel.findAll({
+            attributes:['id','rol_consulta','fecha','hora'],
+            include: [
+                {
+                    model: Usuario,
+                    as: 'Paciente', // Alias para el usuario asociado como paciente
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                },
+                {
+                    model: Usuario,
+                    as: 'Dentista', // Alias para el usuario asociado como dentista
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                    where: {
+                        id:id
+                    }
+                },
+            ],
+        });
+        return res.status(200).send(dataAppointments);
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor: " + error);
+    }
+}
+
+const getAppointmentsByPaciente = async (req, res) => {
+    try {
+        const { id } = matchedData(req);
+
+        const dataAppointments = await citasModel.findAll({
+            attributes:['id','rol_consulta','fecha','hora'],
+            include: [
+                {
+                    model: Usuario,
+                    as: 'Paciente', // Alias para el usuario asociado como paciente
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                    where: {
+                        id:id
+                    }
+                },
+                {
+                    model: Usuario,
+                    as: 'Dentista', // Alias para el usuario asociado como dentista
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                },
+            ],
+        });
+        return res.status(200).send(dataAppointments);
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor: " + error);
+    }
+}
+
+const getAppointmentsByMotivo = async (req, res) => {
+    try {
+        const { rol_consulta } = matchedData(req);
+        console.log('Rol de Consulta: '+rol_consulta);
+
+        const dataAppointments = await citasModel.findAll({
+            attributes:['id','rol_consulta','fecha','hora','motivo'],
+            where: {
+                rol_consulta:rol_consulta
+            },
+            include: [
+                {
+                    model: Usuario,
+                    as: 'Paciente', // Alias para el usuario asociado como paciente
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas','imagen'],
+                },
+                {
+                    model: Usuario,
+                    as: 'Dentista', // Alias para el usuario asociado como dentista
+                    attributes: ['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas','imagen'],
+                },
+            ],
+        });
+        return res.status(200).send(dataAppointments);
+
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send("Error interno del servidor: " + error);
+    }
+}
+
 const getAppointment = async (req, res) => {
     try {
 
@@ -86,7 +209,11 @@ const deleteAppointment = async (req, res) => {
 module.exports = { 
     createAppointment, 
     getAppointment, 
-    getAppointments, 
+    getAppointments,
+    getAppointmentsByDentista,
+    getAppointmentsByPaciente,
+    getAppointmentsByMotivo,
     putAppointment,
     deleteAppointment,
+    getApoinmentsFecha
 }

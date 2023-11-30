@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="form_container pl-5 pr-5 pt-2 m-5 border-round-lg">
+
+
+        <p-table [value]="tratamientos" [tableStyle]="{'min-width': '60rem'}">
+            <ng-template pTemplate="caption">
+                <div class="flex align-items-center justify-content-between text-6xl">
+                    Reporte de todas las trats
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr class="text-3xl">
+                    <th>Imagen</th>
+                    <th>Nombre del tratamiento</th>
+                    <th>Descripción</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-trat>
+                <tr class="text-base">
+
+                    <td>
+                        <div class="flex justify-content-center">
+                            <img [src]="trat.imagen" alt="" class="w-6 border-round-md">
+                        </div>
+                    </td>
+                    <td class="text-4xl"><h3>{{trat.nombre}}</h3></td>
+
+                    <td class="text-2xl">{{ trat.descripcion }} </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="flex align-items-center justify-content-between">
+                    En toatl hay {{tratamientos ? tratamientos.length : 0 }} trats.
+                </div>
+            </ng-template>
+        </p-table>
+
+    </div>
+</div>

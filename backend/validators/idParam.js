@@ -10,6 +10,15 @@ const validatorIdParam = [
     }
 ]
 
+const validatorRolParam = [
+    check("rol")
+        .exists()
+        .notEmpty(),
+    (req, res, next) => {
+        return validateResults(req, res, next);
+    }
+]
+
 const validatorIdFacturaParam = [
     check("id_factura")
         .exists()
@@ -20,4 +29,4 @@ const validatorIdFacturaParam = [
     }
 ]
 
-module.exports = { validatorIdParam, validatorIdFacturaParam };
+module.exports = { validatorIdParam, validatorIdFacturaParam, validatorRolParam };

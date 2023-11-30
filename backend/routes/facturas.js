@@ -4,21 +4,47 @@ const {
     createFactura,
     getFactura,
     getFacturas,
+    getFilterFacturas,
     putFactura,
     deleteFactura
 } = require('../controllers/facturas');
 
-const { validatorCreateFactura, validatorUpdateFactura } = require('../validators/facturas');
-const {validatorIdParam} = require('../validators/idParam');
+const { 
+    validatorCreateFactura, 
+    validatorUpdateFactura 
+} = require('../validators/facturas');
 
-router.post("/", validatorCreateFactura, createFactura);
+const {validatorIdParam, validatorRolParam} = require('../validators/idParam');
 
-router.get("/:id", validatorIdParam, getFactura);
+router.post(
+    "/", 
+    validatorCreateFactura, 
+    createFactura);
 
-router.get("", getFacturas);
+router.get(
+    "/filter", 
+    validatorIdParam,
+    validatorRolParam,
+    getFilterFacturas);
 
-router.put("/:id", validatorIdParam, validatorUpdateFactura, putFactura);
+router.get(
+    "/:id", 
+    validatorIdParam, 
+    getFactura);
 
-router.delete("/:id", validatorIdParam, deleteFactura);
+router.get(
+    "", 
+    getFacturas);
+
+router.put(
+    "/:id", 
+    validatorIdParam, 
+    validatorUpdateFactura, 
+    putFactura);
+
+router.delete(
+    "/:id", 
+    validatorIdParam, 
+    deleteFactura);
 
 module.exports = router;

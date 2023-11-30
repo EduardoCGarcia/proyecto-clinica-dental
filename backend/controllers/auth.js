@@ -45,22 +45,22 @@ const signUp = async (req, res) => {
         /**
      * Body object.
      */
-    const body = { ...req, pass: password };
-        
+        const body = { ...req, pass: password, rol: 'paciente' };
+
         const dataUser = await Usuario.create(body);
-        
+
         dataUser.set('pass', undefined, { strict: false })
 
-          /**
-     * Data object.
-     */
-    const data = {
+        /**
+   * Data object.
+   */
+        const data = {
             token: await tokenSign(dataUser),
             user: dataUser
-        } 
+        }
 
 
-        res.send({ data: data });
+        res.send(data);
 
     } catch (error) {
         console.error('Error during signUp: ', error); // Cambia a console.error para diferenciar errores en tus logs
@@ -76,11 +76,11 @@ const signUp = async (req, res) => {
      * @returns {Promise<void>} - A promise that resolves when the login process is complete.
      * @throws {Error} - If an error occurs during the login process.
      */
-    const logIn = async (req, res) => {
+const logIn = async (req, res) => {
     try {
         req = matchedData(req);
-        const user = await usersModel.findOne({ where: { email: req.email } });
-        
+        const user = await Usuario.findOne({ where: { email: req.email } });
+
         if (!user) {
             handleHttpError(res, "USER_NOT_EXIST", 404);
             return;
@@ -95,7 +95,7 @@ const signUp = async (req, res) => {
             return;
         }
 
-        user.set('pass', undefined,{strict:false});
+        user.set('pass', undefined, { strict: false });
 
         /**
          * Data object.

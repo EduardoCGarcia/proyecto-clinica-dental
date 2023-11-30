@@ -1,5 +1,7 @@
 const {sequelize} = require("../../config/mysql");
 const { DataTypes } = require("sequelize");
+const Factura = require('../mysql/factura');
+const Usuario = require("./users");
 
 const Pagos = sequelize.define(
     "pagos",
@@ -29,5 +31,8 @@ const Pagos = sequelize.define(
         timestamps: false, // Esto agrega campos createdAt y updatedAt a la tabla.
     }
 );
+
+Pagos.belongsTo(Factura, { foreignKey: "id_factura", as: "Factura" });
+
 
 module.exports = Pagos;

@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="form_container pl-5 pr-5 pt-2 m-5 border-round-lg">
+        <h3>Registrate aquí</h3>
+        <form [formGroup]="userForm" (ngSubmit)="onSignUp()">
+
+            <div class="formgrid grid m-2">
+                <div class="field col-12 sm:col-12 lg:col-4">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="nombre">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-6 lg:col-4">
+                    <label for="primerApellido">Primer Apellido</label>
+                    <input id="primerApellido" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="primerApellido">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-6 lg:col-4">
+                    <label for="segundoApellido">Segundo apellido</label>
+                    <input id="segundoApellido" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="segundoApellido">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-6 lg:col-6">
+                    <label for="email">email</label>
+                    <input id="email" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="email">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-6 lg:col-6">
+                    <label for="contraseña">Contraseña</label>
+                    <input id="contraseña" type="password" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="pass">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-12 lg:col-12">
+                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                    <p-calendar id="fechaNacimiento" formControlName="fechaNacimiento" [showIcon]="true" styleClass="text-xs w-full"></p-calendar>
+                </div>
+                <div class="field col-12 sm:col-12 md:col-8 lg:col">
+                    <label for="direccion">Dirección</label>
+                    <input id="direccion" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="direccion">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-4 lg:col">
+                    <label for="telefono">Teléfono</label>
+                    <input id="telefono" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="telefono">
+                </div>
+                <div class="field col-12">
+                    <label for="notas">Notas</label>
+                    <textarea id="notas" type="text" rows="4" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="notas"></textarea>
+                </div>
+                <div class="flex justify-content-center w-full">
+                    <p-button label="Sign Up" icon="pi pi-user" styleClass="w-10rem sm:w-20rem mx-auto" type="submit"></p-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

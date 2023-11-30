@@ -1,0 +1,82 @@
+<p-splitter [panelSizes]="[60, 70]" styleClass="m-2" [style]="{ height: '72vh' }">
+  <ng-template pTemplate>
+    <div class="table_container">
+      <app-calendario></app-calendario>
+    </div>
+
+
+  </ng-template>
+  <ng-template pTemplate>
+    <div class="container">
+      <div class="form_container pl-5 pr-5 pt-5 m-5 border-round-lg">
+        <h3>Agendar cita </h3>
+        <form [formGroup]="citaForm" (ngSubmit)="onCreateCita()">
+          <div class="formgrid grid m-2">
+            <div class="field col-12 sm:col-12 md:col-7 lg:col-4">
+              <label for="patient">Paciente</label>
+              <select formControlName="selectedPatient" id="patient"
+                class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary"
+                style="appearance: auto" (change)="onPatientSelectionChange()">
+                <option *ngFor="let patient of this.pacientes" [value]="patient.id">
+                  {{ patient.nombre }} {{ patient.primerApellido }} {{ patient.segundoApellido }}
+                </option>
+              </select>
+            </div>
+            <div class="field col-12 sm:col-12 md:col-5 lg:col-4">
+              <label for="email">email</label>
+              <input id="email" type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="email">
+            </div>
+            <div class="field col-12 sm:col-12 md:col-12 lg:col-4">
+              <label for="telefono">Teléfono</label>
+              <input id="telefono" type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="telefono">
+            </div>
+            <div class="field col-12 sm:col-12 md:col-12 lg:col-12">
+              <label for="fecha">Seleccione la Fecha</label>
+              <p-calendar id="fecha" formControlName="fecha" [showIcon]="true"
+                styleClass="text-xs w-full" (onSelect)="validaFecha()" dateFormat="yy-mm-dd"></p-calendar>
+            </div>
+            <label for="telefono">Seleccione la hora</label>
+            <select formControlName="hora" id="patient"
+              class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary"
+              style="appearance: auto">
+              <option *ngFor="let hora of lista" [value]="hora">
+                {{hora}}
+              </option>
+            </select>
+            <div class="field col-12 sm:col-12 md:col-5 lg:col-6">
+              <label for="motivo">Ingrese el motivo</label>
+              <input id="motivo" type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="motivo">
+            </div>
+            <div class="field col-12 sm:col-12 md:col-5 lg:col-6">
+              <label for="nota">Notas</label>
+              <input id="nota" type="text"
+                class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+                formControlName="nota">
+            </div>
+            <label for="telefono">Seleccione la prioridad</label>
+            <select formControlName="rol_consulta" id="consulta"
+              class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary"
+              style="appearance: auto" >
+              <option *ngFor="let rol of rol" [value]="rol">
+                {{rol}}
+              </option>
+            </select>
+            <p>
+
+            </p>
+            <div class="flex justify-content-center w-full">
+              <p-button label="Crear factura" icon="pi pi-book" styleClass="w-10rem sm:w-20rem mx-auto"
+                  type="submit"></p-button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-template>
+</p-splitter>

@@ -30,11 +30,6 @@ const validatorSignUp = [
     check("notas")
     .isLength({min:0,max:99}),
 
-    check("rol")
-    .exists()
-    .notEmpty()
-    .isLength({min:5,max:10}),
-
     check("email")
     .exists()
     .notEmpty()
@@ -44,8 +39,6 @@ const validatorSignUp = [
     .exists()
     .notEmpty()
     .isLength({min:8,max:20}),
-
-    check("cedula"),
 
     (req, res, next) => {
         return validateResults(req, res, next); 

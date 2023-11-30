@@ -52,6 +52,27 @@ const validatorCreateAppoinment = [
         return validateResults(req, res, next);
     }
 ]
+const validatorGetFecha = [
+    check('fecha')
+        .exists()
+        .notEmpty(),
+    check('id_dentista')
+        .optional()
+        .isInt()
+        .withMessage('El ID del dentista debe ser un número entero'),
+    (req, res, next) => {
+        return validateResults(req, res, next);
+    }
+]
+
+const validatorFecha = [
+    check('fecha')
+    .exists()
+    .notEmpty(),
+    (req, res, next) => {
+        return validateResults(req, res, next);
+    }
+]
 
 const validatorUpdateAppoinment = [
     check('id_dentista')
@@ -100,4 +121,17 @@ const validatorUpdateAppoinment = [
     }
 ]
 
-module.exports = { validatorCreateAppoinment, validatorUpdateAppoinment }
+const validatorRolAppoinment = [
+
+    check('rol_consulta')
+        .exists()
+        .isIn(['cita', 'urgencia'])
+        .withMessage('El rol de la consulta debe ser "cita" o "urgencia"'),
+
+    (req, res, next) => {
+        return validateResults(req, res, next);
+    }
+]
+
+
+module.exports = { validatorCreateAppoinment, validatorUpdateAppoinment, validatorRolAppoinment,validatorGetFecha  }

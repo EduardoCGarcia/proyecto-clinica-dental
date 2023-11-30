@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="form_container pl-5 pr-5 pt-2 m-5 border-round-lg">
+        <h3>Puedes crear una nueva factura aquí </h3>
+        <form [formGroup]="facturaForm" (ngSubmit)="onCreateFactura()">
+
+            <div class="formgrid grid m-2">
+                <div class="field col-12 sm:col-12 md:col-7 lg:col-4">
+                    <label for="patient">Paciente</label>
+                    <select formControlName="selectedPatient" id="patient"
+                        class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary"
+                        style="appearance: auto" 
+                        (change)="onPatientSelectionChange()">
+                        <option *ngFor="let patient of getUniquePatients()" [value]="patient.id">
+                            {{ patient.nombre }} {{ patient.primerApellido }} {{ patient.segundoApellido }}
+                        </option>
+                    </select>
+                </div>
+                <div class="field col-12 sm:col-12 md:col-5 lg:col-4">
+                    <label for="email">email</label>
+                    <input id="email" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="email">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-12 lg:col-4">
+                    <label for="telefono">Teléfono</label>
+                    <input id="telefono" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="telefono">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-12 lg:col-12">
+                    <label for="fecha_emision">Fecha de emision</label>
+                    <p-calendar id="fecha_emision" formControlName="fecha_emision" [showIcon]="true" styleClass="text-xs w-full"></p-calendar>
+                </div>
+                <div class="field col-12 sm:col-12 md:col-12 lg:col-7">
+                    <label for="tratamiento">Tratamiento</label>
+                    <select formControlName="id_tratamiento" id="tratamiento"
+                        class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary"
+                        style="appearance: auto" 
+                        (change)="onTratamientosSelectionChange()">
+                        <option *ngFor="let tratamiento of getUniqueTratamientos()" [value]="tratamiento.id">
+                            {{ tratamiento.nombre }}
+                        </option>
+                    </select>
+                </div>
+                <div class="field col-12 sm:col-12 md:col-12 lg:col-5">
+                    <label for="total_tratamiento">Precio del tratamiento</label>
+                    <input id="total_tratamiento" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="total_tratamiento">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-12 lg:col-5">
+                    <label for="monto">Primer pago</label>
+                    <input id="monto" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="monto">
+                </div>
+                <div class="field col-12">
+                    <label for="observaciones">Observaciones del pago</label>
+                    <textarea id="observaciones" type="text" rows="4" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="observaciones"></textarea>
+                </div>
+                <div class="field col-12">
+                    <label for="nota">Notas medicas para el historial médico</label>
+                    <textarea id="nota" type="text" rows="4" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="nota"></textarea>
+                </div>
+
+                <div class="flex justify-content-center w-full">
+                    <p-button label="Crear factura" icon="pi pi-book" styleClass="w-10rem sm:w-20rem mx-auto"
+                        type="submit"></p-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
