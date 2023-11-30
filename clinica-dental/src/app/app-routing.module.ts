@@ -6,6 +6,7 @@ import { LogInComponent } from './pages/auth/log-in/log-in.component';
 import { SignUpComponent } from './pages/auth/sign-up/sign-up.component';
 import { CitaComponent } from './pages/cita/cita.component';
 import { TratamientoComponent } from './pages/tratamiento/tratamiento.component';
+import { CalendarioComponent } from './pages/calendario/calendario.component';
 
 
 
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'not-found', component: NotFoundComponent },
   { path: 'login', component: LogInComponent },
+  {path: 'calendario', component:CalendarioComponent},
   { path: 'signup', component: SignUpComponent },
   { path: 'citas', component: CitaComponent },
   { path: 'tratamientos', component: TratamientoComponent },
