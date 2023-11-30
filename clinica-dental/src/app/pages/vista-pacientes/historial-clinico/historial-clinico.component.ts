@@ -22,7 +22,6 @@ export class HistorialClinicoComponent {
     {field:'nota', subfield:'', header:'Nota'}
   ]
   user!: Usuario | null;
-  historialClinicoForm!:FormGroup;
   selectedPatientId!: number;
   facturas: Factura[] = [];
   facturasRes: Factura[] = [];
@@ -39,11 +38,6 @@ export class HistorialClinicoComponent {
       this.user = usuario;
     })
     console.log("Id usuario actual "+this.user?.user.id);
-
-    this.historialClinicoForm = this.formBuilder
-    .group({
-      selectedPatient: [null, Validators.required]
-    })
     this.loadHistorial();
   }
 
