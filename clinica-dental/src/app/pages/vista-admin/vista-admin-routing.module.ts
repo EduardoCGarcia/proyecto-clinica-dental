@@ -9,6 +9,7 @@ import { TodasLasFacturasComponent } from './reportes/todas-las-facturas/todas-l
 import { TodosLosTratamientosComponent } from './reportes/todos-los-tratamientos/todos-los-tratamientos.component';
 import { TratamientoComponent } from '../tratamiento/tratamiento.component';
 import { TodosLosPagosComponent } from './reportes/todos-los-pagos/todos-los-pagos.component';
+import { TodosLosHistorialesComponent } from './reportes/todos-los-historiales/todos-los-historiales.component';
 
 const routes: Routes = [
   { 
@@ -45,6 +46,10 @@ const routes: Routes = [
        {
         path: 'pagos/listar',
         component: TodosLosPagosComponent // Reemplaza con el componente correcto
+      },
+       {
+        path: 'historial/listar', 
+        component:TodosLosHistorialesComponent // Reemplaza con el componente correcto
       },
       /*{
         path: 'facturas/ver',

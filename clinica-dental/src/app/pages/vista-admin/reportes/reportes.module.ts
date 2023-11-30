@@ -8,6 +8,7 @@ import { PorCitaRoleComponent } from './por-cita-role/por-cita-role.component';
 import { TodasLasFacturasComponent } from './todas-las-facturas/todas-las-facturas.component';
 import { TodosLosTratamientosComponent } from './todos-los-tratamientos/todos-los-tratamientos.component';
 import { TodosLosPagosComponent } from './todos-los-pagos/todos-los-pagos.component';
+import { TodosLosHistorialesComponent } from './todos-los-historiales/todos-los-historiales.component';
 
 
 
@@ -18,7 +19,8 @@ import { TodosLosPagosComponent } from './todos-los-pagos/todos-los-pagos.compon
     PorCitaRoleComponent,
     TodasLasFacturasComponent,
     TodosLosTratamientosComponent,
-    TodosLosPagosComponent
+    TodosLosPagosComponent,
+    TodosLosHistorialesComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-import { Usuario } from "../../../auth/interfaces/usuario";
+import { Paciente, Usuario } from "../../../auth/interfaces/usuario";
 import { Tratamiento } from "../../../tratamiento/interfaces/tratamiento";
 
 export interface HistorialClinico {
@@ -9,4 +9,6 @@ export interface HistorialClinico {
     nota: string;
     paciente?: Usuario; 
     tratamiento?: Tratamiento;
+    Paciente:Paciente;
+    traatamiento:Tratamiento
   }

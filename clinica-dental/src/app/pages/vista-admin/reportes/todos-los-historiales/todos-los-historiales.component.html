@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="form_container pl-5 pr-5 pt-2 m-5 border-round-lg">
+
+
+
+        <p-table [value]="hostorial" [tableStyle]="{'min-width': '60rem'}">
+            <ng-template pTemplate="caption">
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr class="text-3xl">
+
+                    <th>Paciente</th>
+                    <th>Fecha de aplicación</th>
+                    <th>Tratamiento</th>
+                    <th>Descripción</th>
+                    <th>Nota</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-historial>
+                <tr class="text-2xl">
+                    <td>
+                        {{historial.Paciente.nombre}} {{historial.Paciente.primerApellido}} {{historial.Paciente.segudoApellido}} 
+                    </td>
+                    <td class="flex align-items-center justify-content-around">
+                        {{historial.fecha}} 
+                    </td>
+                    <td class="text-xl">{{ historial.tratamiento.nombre}} </td>
+                    <td class="text-xl">{{ historial.tratamiento.descripcion }} </td>
+                    <td>{{ historial.nota }}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="flex align-items-center justify-content-between">
+                    En toatl hay {{hostorial ? hostorial.length : 0 }} historials.
+                </div>
+            </ng-template>
+        </p-table>
+
+    </div>
+</div>
