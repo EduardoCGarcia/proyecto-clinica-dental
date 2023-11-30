@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="form_container pl-5 pr-5 pt-2 m-5 border-round-lg">
+
+
+
+        <p-table [value]="facturas" [tableStyle]="{'min-width': '60rem'}">
+            <ng-template pTemplate="caption">
+                <div class="flex align-items-center justify-content-between text-6xl">
+                    Reporte de todas las facturas
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr class="text-3xl">
+                    <th>Nombre del paciente</th>
+                    <th>Nombre del dentista</th>
+                    <th>Fecha de emisión</th>
+                    <th>Monto total</th>
+                    <th>Por pagar</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-factura>
+                <tr class="text-base">
+
+                    <td>
+                        <div class="flex align-items-center justify-content-around">
+                            <img [src]="factura.Paciente.imagen" alt="" class="w-1 border-circle">
+                            <span>{{factura.Paciente.nombre}} {{factura.Paciente.primerApellido}}
+                                {{factura.Paciente.segundoApellido}} </span>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="flex align-items-center justify-content-around">
+                            <img [src]="factura.Dentista.imagen" alt="" class="w-1 border-circle">
+                            <span>{{factura.Dentista.nombre}} {{factura.Paciente.primerApellido}}
+                                {{factura.Dentista.segundoApellido}} </span>
+                        </div>
+                    </td>
+
+                    <td class="text-xl">{{ factura.fecha_emision }} </td>
+                    <td>{{ factura.monto_total | titlecase }}</td>
+                    <td>{{ factura.saldo_deudor | titlecase }}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+                <div class="flex align-items-center justify-content-between">
+                    En toatl hay {{facturas ? facturas.length : 0 }} facturas.
+                </div>
+            </ng-template>
+        </p-table>
+
+    </div>
+</div>

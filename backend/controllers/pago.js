@@ -128,11 +128,47 @@ const getPagosByPaciente = async (req, res) => {
     }
 };
 
+const getPagosPacientesAll = async (req, res) => {
+    try {
+        // Obtener el ID del paciente desde los datos coincidentes (matched data)
 
+
+        const pagosList = await pagosModel.findAll({
+            
+            include: [
+                {
+
+                    model: Factura,
+                    as: 'Factura',
+                    attributes: ['id','id_paciente','monto_total','saldo_deudor','estado'],
+
+                    include:[{
+                        model: Usuario,
+                        as: 'Paciente',
+                        attributes: ['nombre', 'primerApellido', 'segundoApellido'],  
+                }]
+                }        
+                
+            ]
+        });
+
+        // Si no hay pagos para ese paciente, envía un mensaje adecuado
+        if (pagosList.length === 0) {
+            return res.status(404).send({ message: 'No se encontraron pagos para el paciente especificado.' });
+        }
+
+        // Envía la lista de pagos como respuesta
+        return res.status(200).send(pagosList);
+
+    } catch (error) {
+        return res.status(500).send("Error interno del servidor: " + error);
+    }
+};
 
 module.exports = {
     addPago,
     getPago,
     getPagosByFactura,
-    getPagosByPaciente
+    getPagosByPaciente,
+    getPagosPacientesAll
 }

@@ -17,6 +17,7 @@ import { AvatarGroupModule } from 'primeng/avatargroup';
 import { SplitterModule } from 'primeng/splitter';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
+import { DataViewModule } from "primeng/dataview";
 @NgModule({
   declarations: [],
   imports: [
@@ -39,7 +40,8 @@ import { CalendarModule } from 'primeng/calendar';
     AvatarGroupModule,
     SplitterModule,
     InputTextareaModule,
-    CalendarModule
+    CalendarModule,
+    DataViewModule
   ]
 })
 export class PrimeNgModule { }

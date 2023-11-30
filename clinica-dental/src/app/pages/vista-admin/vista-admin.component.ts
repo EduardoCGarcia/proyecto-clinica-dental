@@ -6,7 +6,7 @@ import { MenuItem } from 'primeng/api';
   templateUrl: './vista-admin.component.html',
   styleUrls: ['./vista-admin.component.css']
 })
-export class VistaAdminComponent implements OnInit{
+export class VistaAdminComponent implements OnInit {
   items: MenuItem[] | undefined;
 
   ngOnInit(): void {
@@ -22,10 +22,28 @@ export class VistaAdminComponent implements OnInit{
             routerLinkActiveOptions: { exact: true },
           },
           {
-            label: 'Reporte',
+            label: 'Reportes',
             icon: 'pi pi-fw pi-list',
-            routerLink: ['/adminView/citas/reporte'], // Cambia a la ruta deseada
-            routerLinkActiveOptions: { exact: true },
+            items: [
+              {
+                label: 'Todas las citas',
+                icon: 'pi pi-book',
+                routerLink: ['/adminView/todascitas/reporte'], // Cambia a la ruta deseada
+                routerLinkActiveOptions: { exact: true },
+              },
+              {
+                label: 'Por urgencia',
+                icon: 'pi pi-book',
+                routerLink: ['/adminView/rol/urgencia'], // Cambia a la ruta deseada
+                routerLinkActiveOptions: { exact: true },
+              },
+              {
+                label: 'Por cita común',
+                icon: 'pi pi-book',
+                routerLink: ['/adminView/rol/cita'], // Cambia a la ruta deseada
+                routerLinkActiveOptions: { exact: true },
+              }
+            ]
           },
         ]
       },
@@ -34,10 +52,28 @@ export class VistaAdminComponent implements OnInit{
         icon: 'pi pi-fw pi-file',
         items: [
           {
-            label: 'Listar facturas',
+            label: 'Reportes',
             icon: 'pi pi-fw pi-list',
-            routerLink: ['/adminView/facturas/ver'], // Cambia a la ruta deseada
-            routerLinkActiveOptions: { exact: true },
+            items: [
+              {
+                label: 'Todas las facturas',
+                icon: 'pi pi-book',
+                routerLink: ['/adminView/todasfacturas/reporte'], // Cambia a la ruta deseada
+                routerLinkActiveOptions: { exact: true },
+              },
+              {
+                label: 'Por urgencia',
+                icon: 'pi pi-book',
+                routerLink: ['/adminView/rol/urgencia'], // Cambia a la ruta deseada
+                routerLinkActiveOptions: { exact: true },
+              },
+              {
+                label: 'Por cita común',
+                icon: 'pi pi-book',
+                routerLink: ['/adminView/rol/cita'], // Cambia a la ruta deseada
+                routerLinkActiveOptions: { exact: true },
+              }
+            ]
           },
         ]
       },
@@ -46,10 +82,22 @@ export class VistaAdminComponent implements OnInit{
         icon: 'pi pi-fw pi-file',
         items: [
           {
-            label: 'Listar Tratamientos',
+            label: 'Reportes',
             icon: 'pi pi-fw pi-list',
-            routerLink: ['/adminView/facturas/lista'], // Cambia a la ruta deseada
-            routerLinkActiveOptions: { exact: true },
+            items: [
+              {
+                label: 'Todas los los tratamientos',
+                icon: 'pi pi-book',
+                routerLink: ['/adminView/todostratamientos/reporte'], // Cambia a la ruta deseada
+                routerLinkActiveOptions: { exact: true },
+              },
+              {
+                label: 'Vista para el usuario',
+                icon: 'pi pi-book',
+                routerLink: ['/adminView/cliente/vista'], // Cambia a la ruta deseada
+                routerLinkActiveOptions: { exact: true },
+              }
+            ]
           },
         ]
       },

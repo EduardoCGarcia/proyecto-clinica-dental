@@ -94,6 +94,11 @@ const getFacturas = async (req, res) => {
                     model:Usuario,
                     as: 'Paciente',
                     attributes:['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'direccion','imagen']
+                },
+                {
+                    model:Usuario,
+                    as: 'Dentista',
+                    attributes:['id','nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'direccion','imagen']
                 }
             ]
         })
