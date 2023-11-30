@@ -9,16 +9,8 @@ const validatorAddPago = [
         .isEmpty()
         .withMessage('El ID de la factura es requerido'),
     check('fecha')
-        .custom(value => {
-            if (isNaN(new Date(value).getTime())) {
-                throw new Error();
-            }
-            return true;
-        })
-        .withMessage('La fecha debe ser válida')
-        .not()
-        .isEmpty()
-        .withMessage('La fecha es requerida'),
+        .exists()
+        .notEmpty(),
 
     check('monto')
         .isDecimal()
@@ -46,14 +38,8 @@ const validatorAddPago = [
 
 const validatorUpdatePago = [
     check('fecha')
-        .optional()
-        .custom(value => {
-            if (isNaN(new Date(value).getTime())) {
-                throw new Error();
-            }
-            return true;
-        })
-        .withMessage('La fecha debe ser válida'),
+        .exists()
+        .notEmpty(),
 
     check('monto')
         .optional()
@@ -75,6 +61,6 @@ const validatorUpdatePago = [
     }
 ];
 
-module.exports = {validatorAddPago, validatorUpdatePago}
+module.exports = { validatorAddPago, validatorUpdatePago }
 
 

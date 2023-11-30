@@ -1,1 +1,57 @@
-<p>crear-pago works!</p>
+<div class="container">
+    <div class="form_container pl-5 pr-5 pt-2 m-5 border-round-lg">
+        <h3>Puedes crear una nueva factura aquí </h3>
+        <form [formGroup]="pagoForm" (ngSubmit)="onCreatePago()">
+            <div class="formgrid grid m-2">
+                <div class="field col-12 sm:col-12 md:col-7 lg:col-4">
+                    <label for="patient">Paciente</label>
+                    <select formControlName="selectedPatientId" id="patient"
+                        class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary"
+                        style="appearance: auto" (change)="onPatientSelectionChange()">
+                        <option *ngFor="let patient of getUniquePatients()" [value]="patient.id">
+                            {{ patient.nombre }} {{ patient.primerApellido }} {{ patient.segundoApellido }}
+                        </option>
+                    </select>
+                </div>
+                <div class="field col-1 sm:col-1 md:col-1 lg:col-2">
+                    <label for="factura">Folio</label>
+                    <select formControlName="id_factura" id="factura"
+                        class="w-full text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round outline-none focus:border-primary"
+                        style="appearance: auto" (change)="onFacturaSelectionChange()" >
+                        <option *ngFor="let factura of facturasFromUsuario" [value]="factura.id">
+                            {{ factura.id }}
+                        </option>
+                    </select>
+                </div>
+                <div class="field col-12 sm:col-12 md:col-5 lg:col-2">
+                    <label for="fecha_emision">Emitida</label>
+                    <input pInputText  id="fecha_emision" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="fecha_emision">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-5 lg:col-2">
+                    <label for="monto_total">Total</label>
+                    <input pInputText  id="monto_total" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="monto_total">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-5 lg:col-2">
+                    <label for="saldo_deudor">Por pagar</label>
+                    <input pInputText  id="saldo_deudor" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="saldo_deudor">
+                </div>
+                <div class="field col-12 sm:col-12 md:col-12 lg:col-6">
+                    <label for="fecha">Fecha</label>
+                    <p-calendar id="fecha" formControlName="fecha" [showIcon]="true" styleClass="text-xs w-full"></p-calendar>
+                </div>
+                <div class="field col-12 sm:col-12 md:col-12 lg:col-6">
+                    <label for="monto">Nuevo pago</label>
+                    <input id="monto" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full h-3rem" formControlName="monto">
+                </div>
+                <div class="field col-12">
+                    <label for="observaciones">Observaciones del pago</label>
+                    <textarea id="observaciones" type="text" rows="4" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" formControlName="observaciones"></textarea>
+                </div>
+                <div class="flex justify-content-center w-full">
+                    <p-button label="Hacer pago" icon="pi pi-money-bill" styleClass="w-10rem sm:w-20rem mx-auto"
+                        type="submit"></p-button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
