@@ -7,7 +7,7 @@ import { Cita } from '../interfaces/cita';
   providedIn: 'root'
 })
 export class CitaService {
-  private apiUrl = 'http://localhost:3000/api/cita'; // Ajusta la URL según tus rutas
+  private apiUrl = 'http://18.224.39.140:3000/api/cita'; // Ajusta la URL según tus rutas
 
   constructor(private http: HttpClient) { }
 
