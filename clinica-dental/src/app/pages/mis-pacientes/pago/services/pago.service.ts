@@ -7,7 +7,7 @@ import { Pago } from '../interfaces/pago';
   providedIn: 'root'
 })
 export class PagoService {
-  private apiUrl = 'http://localhost:3000/api/pago/byFactura';  // Cambia esto según tu configuración de backend
+  private apiUrl = 'http://localhost:3000/api/pago';  // Cambia esto según tu configuración de backend
 
   constructor(private http: HttpClient) { }
 
@@ -16,10 +16,10 @@ export class PagoService {
   }
 
   getPago(id: number): Observable<Pago> {
-    return this.http.get<Pago>(`${this.apiUrl}/${id}`);
+    return this.http.get<Pago>(`${this.apiUrl}/byUser/${id}`);
   }
 
   getPagosByFactura(idFactura: number): Observable<Pago[]> {
-    return this.http.get<Pago[]>(`${this.apiUrl}/${idFactura}`);
+    return this.http.get<Pago[]>(`${this.apiUrl}/byFactura/${idFactura}`);
   }
 }

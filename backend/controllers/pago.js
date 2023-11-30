@@ -1,7 +1,7 @@
 const { matchedData } = require("express-validator");
 const models = require("../models");
 const pagosModel = models.pagosModel;
-const facturasModel = models.facturasModel;
+const facturasModel = require("../models").facturasModel;
 
 
 const addPago = async (req, res) => {
@@ -18,19 +18,48 @@ const addPago = async (req, res) => {
 
 
 const getPago = async (req, res) => {
+
     try {
-
+        const { Op } = require('sequelize'); //Necesaria para instrucciones sql más sencillas
+        
         const { id } = matchedData(req);
+        console.log('id: '+id);
+        const factura = await facturasModel.findAll({
+            attributes:['id_paciente','id_dentista', 'id'],
+            where: {
+                //id_dentista: id
+                [Op.or]: [
+                    { id_dentista: id },
+                    { id_paciente: id }
+                ]
+            }
+        });
+        
+        const idsFacturas = factura.map(factura => factura.id);
 
-        const dataPago =  await pagosModel.findByPk(id)
-        if (!dataPago) {
-            return res.status(404).send({message: 'Pago no no encontrado'});
+        console.log('Ids de las facturas:', idsFacturas);
+        // Realizar una búsqueda de pagos con join en la tabla facturas
+        const pagosList = await pagosModel.findAll({
+            attributes: ['id', 'id_factura', 'fecha', 'monto', 'forma_de_pago', 'observaciones'],
+            where: {
+                id_factura: factura.map(factura => factura.id)
+            }
+        });
+
+        const idPagos = pagosList.map(pagos => pagos.id)
+        console.log('Ids de los pagos:', idPagos);
+        
+        // Si no hay pagos para ese dentista, envía un mensaje adecuado
+        if (pagosList === 0) {
+            return res.status(404).send({ message: 'No se encontraron pagos para el dentista especificado.' });
         }
-
-        return res.status(200).send(dataPago);
-
+    
+        // Envía la lista de pagos como respuesta
+        return res.status(200).send(pagosList);
+    
     } catch (error) {
-        return res.status(500).send("Error interno del servidor: " + error); // This will send a response to the client indicating that there was an error creating the appointment and will include the
+        console.error("Error interno del servidor:", error.message);
+        return res.status(500).send("Error interno del servidor: " + error.message);
     }
 }
 

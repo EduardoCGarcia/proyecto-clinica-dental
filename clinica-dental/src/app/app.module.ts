@@ -11,7 +11,6 @@ import { AuthModule } from './pages/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CitaModule } from './pages/cita/cita.module';
 import { TratamientoModule } from './pages/tratamiento/tratamiento.module';
-import { PagoModule } from './pages/pago/pago.module';
 import { HistorialClinicoModule } from './pages/historial-clinico/historial-clinico.module';
 import { CalendarioModule } from './pages/calendario/calendario.module';
 
@@ -32,7 +31,6 @@ import { CalendarioModule } from './pages/calendario/calendario.module';
     AuthModule,
     CitaModule,
     TratamientoModule,
-    PagoModule,
     HistorialClinicoModule,
     CalendarioModule,
   ],

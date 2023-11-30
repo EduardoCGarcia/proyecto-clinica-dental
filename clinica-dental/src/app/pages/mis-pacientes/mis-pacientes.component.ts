@@ -36,10 +36,14 @@ export class MisPacientesComponent implements OnInit {
           {
             label: 'Nuevo',
             icon: 'pi pi-fw pi-plus',
+            routerLink: ['/mis-pacientes/pago/crear'], // Cambia a la ruta deseada
+            routerLinkActiveOptions: { exact: false },
           },
           {
             label: 'Listar pagos',
-            icon: 'pi pi-fw pi-list'
+            icon: 'pi pi-fw pi-list',
+            routerLink: ['/mis-pacientes/pago/listar'], // Cambia a la ruta deseada
+            routerLinkActiveOptions: { exact: true },
           },
         ]
       },
@@ -49,12 +53,10 @@ export class MisPacientesComponent implements OnInit {
         items: [
           {
             label: 'Por pacientes',
-            icon: 'pi pi-fw pi-sitemap'
+            icon: 'pi pi-fw pi-sitemap',
+            routerLink: ['/mis-pacientes/historial/porPaciente'], // Cambia a la ruta deseada
+            routerLinkActiveOptions: { exact: true },
           },
-          {
-            label: 'Mis pacientes',
-            icon: 'pi pi-fw pi-user'
-          }
         ]
       }
     ];

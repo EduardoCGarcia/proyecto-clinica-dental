@@ -5,6 +5,7 @@ import { MisPacientesRoutingModule } from './mis-pacientes-routing.module';
 import { MisPacientesComponent } from './mis-pacientes.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FacturaModule } from './factura/factura.module';
+import { PagoModule } from './pago/pago.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FacturaModule } from './factura/factura.module';
     CommonModule,
     MisPacientesRoutingModule,
     SharedModule,
-    FacturaModule
+    FacturaModule,
+    PagoModule
   ]
 })
 export class MisPacientesModule { }

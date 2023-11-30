@@ -8,7 +8,7 @@ const { validatorAddPago } = require('../validators/pago');
 
 router.post('/',validatorAddPago, addPago);
 
-router.get("/byPago/:id", validatorIdParam,getPago);
+router.get("/byUser/:id", validatorIdParam,getPago);
 
 router.get("/byFactura/:id", validatorIdParam,getPagosByFactura);
 
