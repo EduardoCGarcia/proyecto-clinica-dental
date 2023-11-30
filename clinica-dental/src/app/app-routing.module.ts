@@ -18,6 +18,8 @@ const routes: Routes = [
   { path: 'tratamientos', component: TratamientoComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'mis-pacientes', loadChildren: () => import('./pages/mis-pacientes/mis-pacientes.module').then(m => m.MisPacientesModule) },
+  { path: 'pacientesView', loadChildren: () => import('./pages/vista-pacientes/vista-pacientes.module').then(m => m.VistaPacientesModule) },
+  { path: 'adminView', loadChildren: () => import('./pages/vista-admin/vista-admin.module').then(m => m.VistaAdminModule) },
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
 ];
 

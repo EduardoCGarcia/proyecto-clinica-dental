@@ -13,6 +13,8 @@ import { CitaModule } from './pages/cita/cita.module';
 import { TratamientoModule } from './pages/tratamiento/tratamiento.module';
 import { CalendarioModule } from './pages/calendario/calendario.module';
 import { HistorialClinicoModule } from './pages/mis-pacientes/historial-clinico/historial-clinico.module';
+import { VistaAdminModule } from './pages/vista-admin/vista-admin.module';
+import { VistaPacientesModule } from './pages/vista-pacientes/vista-pacientes.module';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { HistorialClinicoModule } from './pages/mis-pacientes/historial-clinico/
     TratamientoModule,
     HistorialClinicoModule,
     CalendarioModule,
+    VistaAdminModule,
+    VistaPacientesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

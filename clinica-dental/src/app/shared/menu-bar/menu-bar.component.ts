@@ -8,6 +8,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class MenuBarComponent {
   @Input('items') items: MenuItem[] | undefined;
+  @Input('rol') rol !: string;
 
   ngOnInit() {
     
