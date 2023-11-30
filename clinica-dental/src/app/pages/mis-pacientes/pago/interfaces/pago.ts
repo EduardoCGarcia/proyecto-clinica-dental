@@ -1,3 +1,5 @@
+import { Factura } from "../../factura/interfaces/factura";
+
 export interface Pago {
     id: number;
     id_factura: number;
@@ -5,4 +7,8 @@ export interface Pago {
     monto: number;
     forma_de_pago: 'contado' | 'credito';
     observaciones: string;
+}
+
+export interface PagoFactura extends Pago{
+    Factura: Factura;
 }

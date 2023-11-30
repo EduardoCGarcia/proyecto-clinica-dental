@@ -18,13 +18,13 @@ export class NuevaFacturaComponent implements OnInit {
     id_paciente: 0,
     fecha_emision: new Date(),
     monto_total: 0,
-    observaciones:"",
+    observaciones: "",
     saldo_deudor: 0,
     estado: false,
     id_dentista: 0,
     id_tratamiento: 0,
-    monto_pago:0,
-    nota:"",
+    monto_pago: 0,
+    nota: "",
     Dentista: {
       id: 0,
       nombre: "",
@@ -51,11 +51,15 @@ export class NuevaFacturaComponent implements OnInit {
   facturaForm !: FormGroup;
   user!: Usuario | null;
   facturas: Factura[] = [];
-  tratamientos:Tratamiento[] = [];
+  tratamientos: Tratamiento[] = [];
 
   pacienteSeleccionado: Paciente | undefined;
 
-  constructor(private formBuilder: FormBuilder, private facturaSvc: FacturaService, private authSvc: AuthService, private tratamientoSvc:TratamientoService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private facturaSvc: FacturaService,
+    private authSvc: AuthService,
+    private tratamientoSvc: TratamientoService) {
   }
 
   ngOnInit(): void {
@@ -63,20 +67,22 @@ export class NuevaFacturaComponent implements OnInit {
       this.user = usuario;
     })
 
-    this.facturaSvc.getFacturasParms(this.user?.user.rol, this.user?.user.id).subscribe(data => {
-      this.facturas = data;
-    });
+    this.facturaSvc.getFacturasParms(this.user?.user.rol, this.user?.user.id)
+      .subscribe(data => {
+        this.facturas = data;
+      });
 
-    this.tratamientoSvc.getTratamientos().subscribe(data => {
-      this.tratamientos = data
-    })
+    this.tratamientoSvc.getTratamientos()
+      .subscribe(data => {
+        this.tratamientos = data
+      })
 
     this.facturaForm = this.formBuilder.group({
       selectedPatient: [null, Validators.required],
       email: [''],
       telefono: [''],
-      id_paciente:this.factura.id_paciente,
-      fecha_emision:this.factura.fecha_emision,
+      id_paciente: this.factura.id_paciente,
+      fecha_emision: this.factura.fecha_emision,
       id_tratamiento: [null, Validators.required],
       total_tratamiento: this.factura.monto_total,
       observaciones: this.factura.observaciones,
@@ -120,8 +126,8 @@ export class NuevaFacturaComponent implements OnInit {
 
   onPatientSelectionChange(): void {
     const selectedPatientId = this.facturaForm.value.selectedPatient;
-    
-  
+
+
     if (selectedPatientId) {
       this.pacienteSeleccionado = this.getPatientById(parseInt(selectedPatientId, 10));
       this.facturaForm.patchValue({
@@ -131,26 +137,26 @@ export class NuevaFacturaComponent implements OnInit {
       });
     }
   }
-  onTratamientosSelectionChange():void {
+  onTratamientosSelectionChange(): void {
     const selectedTratamientoId = this.facturaForm.value.id_tratamiento;
-    this.factura = {...this.factura,id_tratamiento:parseInt(selectedTratamientoId,10)}
+    this.factura = { ...this.factura, id_tratamiento: parseInt(selectedTratamientoId, 10) }
     console.log(this.factura);
-    
+
   }
   getPatientById(patientId: number): Paciente | undefined {
     return this.getUniquePatients().find(patient => patient.id === patientId);
   }
-  
-  onCreateFactura(){
+
+  onCreateFactura() {
     const data = this.facturaForm.value
     console.log(data);
-    
-    this.facturaSvc.createFactura(data).subscribe(res=>{
+
+    this.facturaSvc.createFactura(data).subscribe(res => {
       if (res) {
         console.log(res);
       }
     })
-    
-    
+
+
   }
 }

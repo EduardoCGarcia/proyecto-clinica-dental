@@ -1,7 +1,9 @@
 const { matchedData } = require("express-validator");
 const models = require("../models");
+const Factura = require("../models/mysql/factura");
 const pagosModel = models.pagosModel;
 const facturasModel = require("../models").facturasModel;
+const Usuario = require("../models").usersModel;
 
 
 const addPago = async (req, res) => {
@@ -21,42 +23,41 @@ const getPago = async (req, res) => {
 
     try {
         const { Op } = require('sequelize'); //Necesaria para instrucciones sql más sencillas
-        
-        const { id } = matchedData(req);
-        console.log('id: '+id);
-        const factura = await facturasModel.findAll({
-            attributes:['id_paciente','id_dentista', 'id'],
-            where: {
-                //id_dentista: id
-                [Op.or]: [
-                    { id_dentista: id },
-                    { id_paciente: id }
-                ]
-            }
-        });
-        
-        const idsFacturas = factura.map(factura => factura.id);
 
-        console.log('Ids de las facturas:', idsFacturas);
-        // Realizar una búsqueda de pagos con join en la tabla facturas
+        const { id } = matchedData(req);
+       
         const pagosList = await pagosModel.findAll({
             attributes: ['id', 'id_factura', 'fecha', 'monto', 'forma_de_pago', 'observaciones'],
-            where: {
-                id_factura: factura.map(factura => factura.id)
-            }
+            include: {
+                model: Factura,
+                as: 'Factura',
+                include: [
+                    {
+                        model: Usuario,
+                        as: 'Paciente', // Alias para el usuario asociado como paciente
+                        attributes: ['id', 'nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                    },
+                    {
+                        model: Usuario,
+                        as: 'Dentista', // Alias para el usuario asociado como dentista
+                        attributes: ['id', 'nombre', 'primerApellido', 'segundoApellido', 'telefono', 'email', 'notas'],
+                    },
+                ],
+                where: {
+                    [Op.or]: [
+                        { id_dentista: id },
+                        { id_paciente: id }
+                    ]
+                }
+            },
+            
         });
-
-        const idPagos = pagosList.map(pagos => pagos.id)
-        console.log('Ids de los pagos:', idPagos);
-        
-        // Si no hay pagos para ese dentista, envía un mensaje adecuado
         if (pagosList === 0) {
             return res.status(404).send({ message: 'No se encontraron pagos para el dentista especificado.' });
         }
-    
-        // Envía la lista de pagos como respuesta
+
         return res.status(200).send(pagosList);
-    
+
     } catch (error) {
         console.error("Error interno del servidor:", error.message);
         return res.status(500).send("Error interno del servidor: " + error.message);
@@ -67,7 +68,7 @@ const getPagosByFactura = async (req, res) => {
     try {
         // Obtener el ID del paciente desde los datos coincidentes (matched data)
         const { id } = matchedData(req);
-        
+
         const pagosList = await pagosModel.findAll({
             where: {
                 id_factura: id
@@ -76,7 +77,7 @@ const getPagosByFactura = async (req, res) => {
 
         // Si no hay pagos para ese paciente, envía un mensaje adecuado
         if (pagosList.length === 0) {
-            return res.status(404).send({message: 'No se encontraron pagos para el paciente especificado.'});
+            return res.status(404).send({ message: 'No se encontraron pagos para el paciente especificado.' });
         }
 
         // Envía la lista de pagos como respuesta
@@ -89,8 +90,8 @@ const getPagosByFactura = async (req, res) => {
 
 
 
-module.exports = { 
-    addPago, 
+module.exports = {
+    addPago,
     getPago,
     getPagosByFactura,
 }
