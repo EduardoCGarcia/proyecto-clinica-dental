@@ -11,8 +11,12 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  getPacientes(): Observable<Paciente[]> {
+  getPacientes(): Observable<Paciente[]|undefined> {
     return this.http.get<Paciente[]>(this.apiUrl+"filter?rol=paciente");
+  }
+
+  getPaciente(id: number): Observable<Paciente> {
+    return this.http.get<Paciente>('http://localhost:3000/api/usuarios/'+id);
   }
 }
 

@@ -44,9 +44,16 @@ const getAppointments = async (req, res) => {
 }
 
 const getApoinmentsFecha = async (req, res) =>{
-    const { fecha, id_dentista } = matchedData(req);
+    
     try {
-        const data = await citasModel.findAll({ where: { fecha: fecha, id_dentista: id_dentista} });
+        const { Op } = require('sequelize');
+        const { fecha, id_dentista } = matchedData(req);
+        const fechaObj = new Date(fecha);
+        const whereClause = fechaObj.getHours() === 0 && fechaObj.getMinutes() === 0
+            ? { fecha: fechaObj }
+            : { fecha: { [Op.gte]: fechaObj, [Op.lt]: new Date(fechaObj.getTime() + 24 * 60 * 60 * 1000) } };
+
+        const data = await citasModel.findAll({ where: whereClause, id_dentista: id_dentista });
         res.send(data);
     } catch (error) {
         console.log(error);

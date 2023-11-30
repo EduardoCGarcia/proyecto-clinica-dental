@@ -15,14 +15,18 @@ export class CitaService {
     return this.http.get<Cita>(`${this.apiUrl}/${id}`);
   }
 
+  createCita(factura: Cita): Observable<Cita> {
+    return this.http.post<Cita>(this.apiUrl, factura);
+  }
+
 
 
   getAppointments(): Observable<Cita[]> {
     return this.http.get<Cita[]>(this.apiUrl);
   }
 
-  getAppointmentsByFecha(id: number|undefined, fecha: Date): Observable<Cita[]> {
-    return this.http.get<Cita[]>(`${this.apiUrl}/fecha?id=${id}&fecha=${fecha}`);
+  getAppointmentsByFecha(fecha: String, id:number|undefined): Observable<Cita[]> {
+    return this.http.get<Cita[]>(`${this.apiUrl}/fecha?fecha=${fecha}&id_dentista=${id}`);
   }
 
   getAppointmentsByDentista(id: number): Observable<Cita[]> {

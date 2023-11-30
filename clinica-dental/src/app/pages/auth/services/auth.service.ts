@@ -37,7 +37,6 @@ export class AuthService {
         this.isAdmin.next(true);
       }
     }
-    
   }
 
   get isLogged(): Observable<boolean> {
