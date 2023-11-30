@@ -1,5 +1,5 @@
-import { Usuario } from "../../auth/interfaces/usuario";
-import { Tratamiento } from "../../tratamiento/interfaces/tratamiento";
+import { Usuario } from "../../../auth/interfaces/usuario";
+import { Tratamiento } from "../../../tratamiento/interfaces/tratamiento";
 
 export interface HistorialClinico {
     id: number;
