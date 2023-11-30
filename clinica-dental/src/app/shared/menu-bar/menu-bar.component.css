@@ -2,7 +2,8 @@
     text-decoration: none;
     background: rgb(2, 0, 36);
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(2, 0, 36, 1) 0%, rgba(57, 144, 93, 1) 0%, rgba(0, 212, 255, 1) 100%);
-    font-size: 2rem;
+    font-size: 4rem;
+    font-weight: 600;
 
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;

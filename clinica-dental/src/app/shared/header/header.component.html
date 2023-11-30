@@ -26,7 +26,7 @@
             <!-- Menú para PACIENTE -->
             <ul>
               <li><a class="item" routerLink="home">Inicio</a></li>
-              <li><a class="item" routerLink="citas">Citas</a></li>
+              <li><a class="item" routerLink="pacientesView">Opciones</a></li>
               <li><a class="item" routerLink="tratamientos">Tratamientos</a></li>
               <li><a class="item" routerLink="login" (click)="logOut()">Logout</a></li>
             </ul>
@@ -48,9 +48,7 @@
                 <!-- Menú para ADMINISTRADOR -->
                 <ul>
                   <li><a class="item" routerLink="home">Inicio</a></li>
-                  <li><a class="item" routerLink="citas">Citas</a></li>
-                  <li><a class="item" routerLink="pacientes">Pacientes</a></li>
-                  <li><a class="item" routerLink="personal">Personal</a></li>
+                  <li><a class="item" routerLink="adminView">Administrar</a></li>
                   <li><a class="item" routerLink="login" (click)="logOut()">Logout</a></li>
                 </ul>
               </ng-container>
