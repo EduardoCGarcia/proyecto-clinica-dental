@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { VistaAdminComponent } from './vista-admin.component';
 import { CalendarioComponent } from '../calendario/calendario.component';
+import { ReporteComponent } from './reporte/reporte.component';
 
 const routes: Routes = [
   { 
@@ -11,11 +12,11 @@ const routes: Routes = [
         path: 'citas/calendario',
         component: CalendarioComponent // Reemplaza con el componente correcto
       },
-      /* {
+       {
         path: 'citas/reporte',
         component: ReporteComponent // Reemplaza con el componente correcto
       },
-      {
+      /*{
         path: 'facturas/ver',
         component: ListarFacturasComponent // Reemplaza con el componente correcto
       },

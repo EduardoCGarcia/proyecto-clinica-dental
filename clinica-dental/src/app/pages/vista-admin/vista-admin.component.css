@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.form_container {
+    background-color: rgba(240, 248, 255, 0.666);
+    width: 90vw;
+}

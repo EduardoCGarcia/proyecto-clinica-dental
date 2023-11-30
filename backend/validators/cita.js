@@ -53,6 +53,15 @@ const validatorCreateAppoinment = [
     }
 ]
 
+const validatorFecha = [
+    check('fecha')
+    .exists()
+    .notEmpty(),
+    (req, res, next) => {
+        return validateResults(req, res, next);
+    }
+]
+
 const validatorUpdateAppoinment = [
     check('id_dentista')
         .optional()
@@ -100,4 +109,4 @@ const validatorUpdateAppoinment = [
     }
 ]
 
-module.exports = { validatorCreateAppoinment, validatorUpdateAppoinment }
+module.exports = { validatorCreateAppoinment, validatorUpdateAppoinment, validatorFecha }

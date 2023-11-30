@@ -13,12 +13,30 @@ const {
 
 const {
     validatorCreateAppoinment,
-    validatorUpdateAppoinment
+    validatorUpdateAppoinment,
+    validatorFecha
 } = require('../validators/cita');
 
 const { validatorIdParam } = require("../validators/idParam");
 
+router.get("/nuevaFecha", validatorFecha, async (req, res) => {
+    try {
+        const citasModel = require("../models").citasModel
+        const { matchedData } = require("express-validator");
+        const { fecha } = matchedData(req);
 
+        const citas = await citasModel.findAll({
+            where: {
+                fecha: new Date(fecha),
+            },
+        });
+
+        res.status(200).json(citas);
+    } catch (error) {
+        console.error("Error al obtener las citas por fecha:", error);
+        res.status(500).send("Error interno del servidor");
+    }
+})
 
 router.post(
     "/",
