@@ -5,7 +5,6 @@ import { Message, MessageService } from 'primeng/api';
 import { UsuarioService } from 'src/app/shared/services/usuario.service';
 import { Paciente, Usuario } from '../auth/interfaces/usuario';
 import { AuthService } from '../auth/services/auth.service';
-import * as moment from 'moment/moment.js';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
