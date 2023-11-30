@@ -1,13 +1,6 @@
 <p-splitter [panelSizes]="[70, 70]" styleClass="m-5" [style]="{ height: '72vh' }">
   <ng-template pTemplate>
     <div class="table_container">
-      <!-- <app-table 
-          [filas]="citas" 
-          [columnas]="cols" 
-          [tableStyle]="{ height : '100%' }"
-          [paginator]="true"
-          [rows]="7">
-        </app-table> -->
       <app-calendario></app-calendario>
     </div>
 
@@ -19,23 +12,29 @@
         <h3>Agendar una nueva cita</h3>
       </div>
       <div class="form_container">
-        <form>
-          <div class="formgrid grid m-4">
-            <div class="field col">
-                <label for="firstname2">Firstname</label>
-                <input id="firstname2" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-            </div>
-            <div class="field col">
-                <label for="lastname2">Lastname</label>
-                <input id="lastname2" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
-            </div>
+        <div class="card flex justify-content-center">
+          <label>Seleccione al Paciente</label>
         </div>
-          <span class="p-float-label">
-            <input pInputText id="username" [(ngModel)]="value" />
-            <label htmlFor="username">Username</label>
-            <h1>{{ value }}</h1>
-          </span>
+        <div class="card flex justify-content-center">
+          <select [(ngModel)]="selectedPaciente" class="select-box">
+            <option *ngFor="let option of pacientes" [ngValue]="option">
+              {{ option.nombre }} {{option.primerApellido}} {{option.segundoApellido}}
+            </option>
+          </select>
+        </div>
+        <form>
+          <div class="card flex justify-content-center">
+            <label>Seleccione al Fecha</label>
+          </div>
+          <div class="card flex justify-content-center">
+            <input type="date" name>
+          </div>
+          <div class="card flex justify-content-center">
+            <label>Seleccione al Fecha</label>
+          </div>
         </form>
+
+
       </div>
     </div>
   </ng-template>

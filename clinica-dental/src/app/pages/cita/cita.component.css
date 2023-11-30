@@ -14,3 +14,9 @@
     justify-content: center;
     text-transform: uppercase;
 }
+
+.select-box {
+    max-height: 200px; /* Ajusta según tus necesidades */
+    overflow-y: auto;
+  }
+  

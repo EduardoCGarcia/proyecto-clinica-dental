@@ -43,6 +43,16 @@ const getAppointments = async (req, res) => {
     }
 }
 
+const getApoinmentsFecha = async (req, res) =>{
+    const { fecha, id_dentista } = matchedData(req);
+    try {
+        const data = await citasModel.findAll({ where: { fecha: fecha, id_dentista: id_dentista} });
+        res.send(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const getAppointmentsByDentista = async (req, res) => {
     try {
         const { id } = matchedData(req);
@@ -166,4 +176,5 @@ module.exports = {
     getAppointmentsByPaciente,
     putAppointment,
     deleteAppointment,
+    getApoinmentsFecha
 }

@@ -15,8 +15,14 @@ export class CitaService {
     return this.http.get<Cita>(`${this.apiUrl}/${id}`);
   }
 
+
+
   getAppointments(): Observable<Cita[]> {
     return this.http.get<Cita[]>(this.apiUrl);
+  }
+
+  getAppointmentsByFecha(id: number|undefined, fecha: Date): Observable<Cita[]> {
+    return this.http.get<Cita[]>(`${this.apiUrl}/fecha?id=${id}&fecha=${fecha}`);
   }
 
   getAppointmentsByDentista(id: number): Observable<Cita[]> {
