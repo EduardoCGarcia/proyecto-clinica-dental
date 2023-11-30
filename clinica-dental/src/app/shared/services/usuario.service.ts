@@ -7,7 +7,7 @@ import { Paciente } from 'src/app/pages/auth/interfaces/usuario';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private apiUrl = 'http://localhost:3000/api/usuarios/';
+  private apiUrl = 'http://18.224.39.140:3000/api/usuarios/';
 
   constructor(private http: HttpClient) { }
 
@@ -16,7 +16,7 @@ export class UsuarioService {
   }
 
   getPaciente(id: number): Observable<Paciente> {
-    return this.http.get<Paciente>('http://localhost:3000/api/usuarios/'+id);
+    return this.http.get<Paciente>('http://18.224.39.140:3000/api/usuarios/'+id);
   }
 }
 

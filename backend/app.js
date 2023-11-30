@@ -30,7 +30,7 @@ const startServer = async () => {
      * specified localhost port. The message is displayed in the console.
      */
     app.listen(PORT, ()=> {
-        console.log(`Servidor corriendo en http://localhost:${PORT}`);
+        console.log(`Servidor corriendo en http:18.224.39.140:${PORT}`);
     })
 }
 
