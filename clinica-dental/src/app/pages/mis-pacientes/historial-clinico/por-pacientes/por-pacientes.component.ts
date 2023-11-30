@@ -16,7 +16,7 @@ import { Factura } from '../../factura/interfaces/factura';
 export class PorPacientesComponent {
   historial: HistorialClinico[] = [];
   cols :any[] = [
-    {field:'fecha', subfield:'', header:'Fecha'},
+    {field:'fecha', subfield:'', header:'Fecha de aplicación'},
     {field:'tratamiento', subfield:'nombre', header:'Tratamiento'},
     {field:'tratamiento', subfield:'descripcion', header:'Descripcion'},
     {field:'nota', subfield:'', header:'Nota'}
